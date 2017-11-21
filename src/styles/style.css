@@ -1,0 +1,72 @@
+body {
+  font-family: "Whitney SSm A", "Whitney SSm B";
+  font-style: normal;
+  font-weight: 300;
+  color: #fefefe88;
+  background-color: #272727;
+}
+
+.headshot {
+  border-radius: 50px;
+  width: 100px;
+  filter: grayscale(100%);
+  margin-bottom: 20px;
+}
+
+.header {
+  padding-top: 100px;
+  text-align: center;
+  width: 60%;
+  margin: auto;
+  padding-bottom: 80px;  
+}
+
+.heart {
+  color: #ff2020;
+  display:inline-block;
+  -webkit-transform:scale(1.2,1); /* Safari and Chrome */
+  -moz-transform:scale(1.2,1); /* Firefox */
+  -ms-transform:scale(1.2,1); /* IE 9 */
+  -o-transform:scale(1.2,1); /* Opera */
+  transform:scale(1.2,1); /* W3C */
+  padding: 0 10px;
+}
+
+.header p {
+  margin-top: 20px;
+  line-height: 1.5em;
+}
+
+.highlight {
+  color: #568fffcc;
+}
+
+.portfolio {
+  background-color: #f5f5f5;
+  color: #272727;
+  padding: 40px 100px;
+}
+
+.portfolio li {
+  margin-bottom: 20px;
+}
+
+.portfolio {
+  font-family: "Whitney SSm A", "Whitney SSm B";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2em;
+}
+
+div.section {
+  font-size: 1.3em;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.title  {
+  font-weight: 600;
+  font-size: 1em;
+  margin-bottom: 10px;
+  line-height: 1.3em;
+}
