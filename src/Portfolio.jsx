@@ -22,7 +22,7 @@ class Portfolio extends React.Component {
           videoDemo: 'WzPvl2aQLkc'
         },
         {
-          title: '3dstxt',
+          title: '3DStxt',
           description: 'A friend-code sharing website for Nintendo 3DS owners. Users connect with other users through Streetpass. This application was built with Ruby on Rails and leverages the Amazon Product API for product images and referral links.',
           imageUrl: '3dstxt-screenshot@2x.png',
           weblink: 'http://3dstxt.com/scott'
