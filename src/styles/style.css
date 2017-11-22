@@ -1,9 +1,27 @@
+@import '../../node_modules/react-modal-video/css/modal-video.min.css';
+
+@media screen and (min-width: 1280px) {
+  .portfolio li {
+    display: inline-block;
+  }
+  .portfolio li:nth-child(even) {
+    margin-left: 30px;
+  }
+}
+
+@media screen and (min-width: 1680px) {
+  .portfolio ul {
+    width: 1400px;
+    margin: auto;
+  }
+}
+
 body {
   font-family: "Whitney SSm A", "Whitney SSm B";
   font-style: normal;
   font-weight: 300;
   color: #fefefe88;
-  background-color: #272727;
+  background-color: #2e363b;
 }
 
 .headshot {
@@ -43,30 +61,86 @@ body {
 
 .portfolio {
   background-color: #f5f5f5;
-  color: #272727;
+  color: #2e363b;
   padding: 40px 100px;
-}
-
-.portfolio li {
-  margin-bottom: 20px;
-}
-
-.portfolio {
+  text-align: center;
   font-family: "Whitney SSm A", "Whitney SSm B";
   font-style: normal;
   font-weight: 400;
   line-height: 1.2em;
 }
 
+.portfolio li {
+  width: 500px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
 div.section {
-  font-size: 1.3em;
-  font-style: italic;
-  font-weight: 700;
+  font-size: 1.5em;
+  margin-bottom: 25px;
+  font-family: "Whitney SSm SmallCaps A", "Whitney SSm SmallCaps B";
+  font-style: normal;
+  font-weight: 400;
+  padding-bottom: 0px;
 }
 
 .title  {
-  font-weight: 600;
-  font-size: 1em;
+  font-size: .8em;
   margin-bottom: 10px;
   line-height: 1.3em;
+  padding-bottom: 5px;
+  padding-left: 10px;
+}
+
+.portfolio img {
+  border: 1px solid #ddd;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.image-box {
+  background-color: #dcdcdc;
+  width: 502px;
+  margin: 0 auto;
+  border-radius: 6px;
+  color: #2e363b;
+  text-align: left;
+}
+
+.description {
+  font-size: .8em;
+  width: 500px;
+  text-align: left;
+  margin: 0 auto;
+  padding-left: 10px;
+}
+
+a {
+  color: #ff2020aa;
+  padding-right: 5px;
+  font-size: .8em;
+  text-decoration: none;
+}
+
+.image-box i {
+  padding-right: 3px;
+  vertical-align: middle;
+}
+
+.header a:not(:first-child) {
+  padding-left: 20px;
+}
+
+a:hover {
+  color: #ff2020;
+}
+
+.external-links {
+  float: right;
+  margin-top: -2px;
+}
+
+.youtube-link {
+  display: inline;
 }
