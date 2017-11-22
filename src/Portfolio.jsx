@@ -40,7 +40,7 @@ class Portfolio extends React.Component {
 
   renderLink(link, icon) {
     let classname = `fa fa-${icon} fa-2`;
-    let linktext = icon === 'github' ? icon : 'website';
+    let linktext = icon === 'github' ? 'repo' : 'site';
 
     return (
         <a href={link}>
@@ -58,7 +58,7 @@ class Portfolio extends React.Component {
     return (
       <div className="youtube-link">
         <ModalVideo videoId={ytlink} isOpen={this.state.isOpen} onClose={() => this.setState({isOpen: false})}/>
-        <a href="#" onClick={this.openModal}><i className="fa fa-youtube-play fa-2" aria-hidden={true}></i>video demo</a>
+        <a href="#" onClick={this.openModal}><i className="fa fa-youtube-play fa-2" aria-hidden={true}></i>demo</a>
       </div>
     )
   }
