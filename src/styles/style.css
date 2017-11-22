@@ -1,6 +1,6 @@
 @import '../../node_modules/react-modal-video/css/modal-video.min.css';
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1140px) {
   .portfolio li {
     display: inline-block;
   }
@@ -9,7 +9,7 @@
   }
 }
 
-@media screen and (min-width: 1680px) {
+@media screen and (min-width: 1420px) {
   .portfolio ul {
     width: 1400px;
     margin: auto;
@@ -17,18 +17,18 @@
 }
 
 body {
-  font-family: "Whitney SSm A", "Whitney SSm B";
+  font-family: 'Whitney SSm A','Whitney SSm B';
   font-style: normal;
   font-weight: 300;
-  color: #fefefe88;
-  background-color: #2e363b;
+  color: #fefefec4;
+  background-color: #2e363b
 }
 
 .headshot {
   border-radius: 50px;
   width: 100px;
   filter: grayscale(100%);
-  margin-bottom: 20px;
+  margin-bottom: 20px
 }
 
 .header {
@@ -36,56 +36,56 @@ body {
   text-align: center;
   width: 60%;
   margin: auto;
-  padding-bottom: 80px;  
+  padding-bottom: 80px
 }
 
 .heart {
   color: #ff2020;
-  display:inline-block;
-  -webkit-transform:scale(1.2,1); /* Safari and Chrome */
-  -moz-transform:scale(1.2,1); /* Firefox */
-  -ms-transform:scale(1.2,1); /* IE 9 */
-  -o-transform:scale(1.2,1); /* Opera */
-  transform:scale(1.2,1); /* W3C */
-  padding: 0 10px;
+  display: inline-block;
+  -webkit-transform: scaleX(1.2);
+  -moz-transform: scaleX(1.2);
+  -ms-transform: scaleX(1.2);
+  -o-transform: scaleX(1.2);
+  transform: scaleX(1.2);
+  padding: 0 10px
 }
 
 .header p {
   margin-top: 20px;
-  line-height: 1.5em;
+  line-height: 1.5em
 }
 
 .highlight {
-  color: #568fffcc;
+  color: #568fffcc
 }
 
 .portfolio {
   background-color: #f5f5f5;
   color: #2e363b;
-  padding: 40px 100px;
+  padding: 40px 20px;
   text-align: center;
-  font-family: "Whitney SSm A", "Whitney SSm B";
+  font-family: 'Whitney SSm A','Whitney SSm B';
   font-style: normal;
   font-weight: 400;
-  line-height: 1.2em;
+  line-height: 1.2em
 }
 
 .portfolio li {
   width: 500px;
   margin: 0 auto;
-  margin-bottom: 50px;
+  margin-bottom: 50px
 }
 
-div.section {
+.skills h2,div.heading {
   font-size: 1.5em;
   margin-bottom: 25px;
-  font-family: "Whitney SSm SmallCaps A", "Whitney SSm SmallCaps B";
+  font-family: 'Whitney SSm SmallCaps A','Whitney SSm SmallCaps B';
   font-style: normal;
   font-weight: 400;
-  padding-bottom: 0px;
+  padding-bottom: 0
 }
 
-.title  {
+.title {
   font-size: .8em;
   margin-bottom: 10px;
   line-height: 1.3em;
@@ -93,54 +93,106 @@ div.section {
   padding-left: 10px;
 }
 
+.skills h2 {
+  font-size: 1.2em;
+  margin-bottom: 6px
+}
+
+.skills li {
+  line-height: 1.3em
+}
+
+.skills section {
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  margin-top: 20px
+}
+
+.skills {
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 0 auto
+}
+
+.image-box .title {
+  padding-top: 6px;
+  margin-bottom: 0;
+  background-color: #000000ba;
+  color: white;
+  margin-top: -4px;
+}
+
 .portfolio img {
-  border: 1px solid #ddd;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
 
 .image-box {
   background-color: #dcdcdc;
-  width: 502px;
+  width: 500px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  color: #2e363b
+}
+
+.description,.image-box {
   margin: 0 auto;
-  border-radius: 6px;
-  color: #2e363b;
   text-align: left;
 }
 
 .description {
-  font-size: .8em;
-  width: 500px;
-  text-align: left;
-  margin: 0 auto;
-  padding-left: 10px;
-}
-
-a {
-  color: #ff2020aa;
-  padding-right: 5px;
-  font-size: .8em;
-  text-decoration: none;
+  font-size: .7em;
+  padding: 5px 10px 5px;
 }
 
 .image-box i {
   padding-right: 3px;
-  vertical-align: middle;
+  vertical-align: middle
 }
 
 .header a:not(:first-child) {
-  padding-left: 20px;
+  padding-left: 20px
 }
 
-a:hover {
-  color: #ff2020;
+.image-box a,.profile-links a {
+  color: #2695fd;
+  padding-right: 17px;
+  font-size: .8em;
+  text-decoration: none
+}
+
+.image-box a:hover,.profile-links a:hover {
+  transition: all .3s ease;
+  color: #00bcd4;
 }
 
 .external-links {
   float: right;
-  margin-top: -2px;
+  margin-top: 0px;
 }
 
 .youtube-link {
-  display: inline;
+  display: inline
+}
+
+.skills {
+  text-align: center
+}
+
+.skills div.heading {
+  color: #f5f5f5;
+  margin-top: 20px;
+  margin-bottom: 0
+}
+
+a {
+  color: #2695fd
+}
+
+a:hover {
+  transition: all .3s ease;
+  color: #00bcd4;
 }

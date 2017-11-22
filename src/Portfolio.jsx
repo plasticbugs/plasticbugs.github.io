@@ -29,7 +29,7 @@ class Portfolio extends React.Component {
         },
         {
           title: 'Gimpshop',
-          description: 'A long time ago, I forked the GIMP project and rearranged it to work like Adobe Photoshop. Since its creation, Gimpshop has been downloaded hundreds of thousands of times. ',
+          description: 'A decade ago, I forked the GIMP project and rearranged it to work like Adobe Photoshop. Since its creation, Gimpshop has been downloaded hundreds of thousands of times. ',
           imageUrl: 'gimpshop-screenshot@2x.png',
           weblink: 'https://en.wikipedia.org/wiki/GIMPshop'
         }
@@ -78,14 +78,14 @@ class Portfolio extends React.Component {
       <li key={project.imageUrl}>
       <div className="image-box">
         <img src={`./images/${project.imageUrl}`} width="500" height="304" />
-        <div className="external-links">{ghlink} {weblink} {vidlink}</div>
+        <div className="external-links">{vidlink} {ghlink} {weblink}</div>
         <p className="title">
           {project.title}
         </p>
+        <p className="description">
+          {project.description}
+        </p>
       </div>
-      <p className="description">
-        {project.description}
-      </p>
     </li>
     );
   }
@@ -93,7 +93,7 @@ class Portfolio extends React.Component {
   render() {
     return (
       <section className="portfolio">
-        <div className="title section">Software Engineering Projects</div>
+        <div className="title heading">Software Engineering Projects</div>
         <ul>
           {this.state.projects.map(project => {
             return this.renderProject(project);
