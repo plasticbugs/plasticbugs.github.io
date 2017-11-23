@@ -162,7 +162,7 @@ div.heading {
 }
 
 .image-box a,.profile-links a {
-  color: #2695fd;
+  color: #8de9ff;;
   padding-right: 17px;
   font-size: .8em;
   text-decoration: none
@@ -170,7 +170,7 @@ div.heading {
 
 .image-box a:hover,.profile-links a:hover {
   transition: all .3s ease;
-  color: #00bcd4;
+  color: #FF9800;
 }
 
 .youtube-link a:hover {
