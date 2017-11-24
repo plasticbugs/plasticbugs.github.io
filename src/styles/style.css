@@ -1,16 +1,16 @@
 @import '../../node_modules/react-modal-video/css/modal-video.min.css';
 
 @media screen and (min-width: 1140px) {
-  .portfolio li {
+  .portfolio .project-list > li {
     display: inline-block;
   }
-  .portfolio li:nth-child(even) {
+  .project-list > li:nth-child(even) {
     margin-left: 30px;
   }
 }
 
 @media screen and (min-width: 1420px) {
-  .portfolio ul {
+  .project-list {
     width: 1400px;
     margin: auto;
   }
@@ -117,7 +117,7 @@ div.heading {
   margin: 0 auto
 } */
 
-.image-box .title {
+.info-box .title {
   padding-top: 6px;
   margin-bottom: 0;
   background-color: #000000ba;
@@ -130,7 +130,7 @@ div.heading {
   border-top-right-radius: 5px;
 }
 
-.image-box {
+.image-box, .info-box {
   background-color: #dcdcdc;
   width: 500px;
   border-top-left-radius: 6px;
@@ -138,9 +138,17 @@ div.heading {
   color: #2e363b
 }
 
-.description,.image-box {
+.image-box li {
+  margin-left: 0;
+}
+
+.description, .image-box, .info-box {
   margin: 0 auto;
   text-align: left;
+}
+
+.image-box {
+  height: 304px;
 }
 
 .description {
@@ -148,7 +156,7 @@ div.heading {
   padding: 5px 10px 5px;
 }
 
-.image-box i {
+.info-box i {
   padding-right: 3px;
   vertical-align: middle
 }
@@ -161,14 +169,14 @@ div.heading {
   padding-right: 0px;
 }
 
-.image-box a,.profile-links a {
+.info-box a,.profile-links a {
   color: #8de9ff;;
   padding-right: 17px;
   font-size: .8em;
   text-decoration: none
 }
 
-.image-box a:hover,.profile-links a:hover {
+.info-box a:hover,.profile-links a:hover {
   transition: all .3s ease;
   color: #FF9800;
 }
@@ -179,7 +187,7 @@ div.heading {
 
 .external-links {
   float: right;
-  margin-top: 0px;
+  margin-top: 3px;
 }
 
 .youtube-link {
@@ -243,4 +251,32 @@ a:hover {
 	border-top-color: #356486;
 	border-width: 9px;
 	margin-left: -9px;
+}
+
+.bullets {
+  transition: all .2s ease;
+  opacity: 0;
+  float: right;
+  z-index: 1;
+  width: 500px;
+  position: absolute;
+  background-color: #133542e0;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding-top: 30px;
+  height: 274px;
+  font-weight: 300;
+}
+
+.bullets:hover {
+  opacity: 1;
+  transition: all .3s ease;
+}
+
+.bullets li {
+  margin-bottom: 18px;
+  color: #fffffff0;
+  padding: 0 20px;
+  width: 460px;
+  font-size: .8em;
 }
