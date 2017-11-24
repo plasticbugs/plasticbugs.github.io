@@ -110,22 +110,6 @@ class Portfolio extends React.Component {
     }
   }
 
-  // showBullets(proj, index) {
-  //   var stateCopy = Object.assign({}, this.state);
-  //   stateCopy.projects = stateCopy.projects.slice();
-  //   stateCopy.projects[index] = Object.assign({}, stateCopy.projects[index]);
-  //   stateCopy.projects[index].showBullets = true;;
-  //   this.setState(stateCopy);
-  // }
-
-  // hideBullets(proj, index) {
-  //   var stateCopy = Object.assign({}, this.state);
-  //   stateCopy.projects = stateCopy.projects.slice();
-  //   stateCopy.projects[index] = Object.assign({}, stateCopy.projects[index]);
-  //   stateCopy.projects[index].showBullets = false;;
-  //   this.setState(stateCopy);
-  // }
-
   renderProject(project, index) {
     let ghlink, weblink, vidlink;
     if(project.ghlink) {
@@ -139,11 +123,7 @@ class Portfolio extends React.Component {
     }
     return(
       <li key={project.imageUrl}>
-      <div 
-        className="image-box"
-        // onMouseOver={() => this.showBullets(project, index)}
-        // onMouseOut={() => this.hideBullets(project, index)}
-      >
+      <div className="image-box">
         {this.renderBullets(project)}
         <img 
           src={`./images/${project.imageUrl}`} 

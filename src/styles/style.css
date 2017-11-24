@@ -122,7 +122,6 @@ div.heading {
   margin-bottom: 0;
   background-color: #000000ba;
   color: white;
-  margin-top: -4px;
 }
 
 .portfolio img {
@@ -174,6 +173,22 @@ div.heading {
   padding-right: 17px;
   font-size: .8em;
   text-decoration: none
+}
+
+.profile-links i {
+  transition: all .2s ease;  
+  font-size: 1.3em;
+  color: #FF5722;
+  padding: 4px 5px;
+  border-radius: 3px;
+  background-color: #ffffff;
+  margin-right: 3px;
+}
+
+.profile-links a:hover > i {
+  transition: all .3s ease;  
+  color: #ffffff;
+  background-color: #FF5722;
 }
 
 .info-box a:hover,.profile-links a:hover {
