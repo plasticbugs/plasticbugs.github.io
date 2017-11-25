@@ -87,7 +87,7 @@ div.heading {
 }
 
 .title {
-  font-size: .8em;
+  font-size: .9em;
   margin-bottom: 10px;
   line-height: 1.3em;
   padding-bottom: 5px;
@@ -152,8 +152,9 @@ div.heading {
 }
 
 .description {
-  font-size: .7em;
-  padding: 5px 10px 5px;
+  font-size: .8em;
+  padding: 8px 10px;
+  line-height: 1.5em;
 }
 
 .info-box i {
@@ -204,7 +205,7 @@ div.heading {
 
 .external-links {
   float: right;
-  margin-top: 3px;
+  margin-top: 5px;
 }
 
 .youtube-link {
