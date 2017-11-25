@@ -196,7 +196,8 @@ div.heading {
   color: #FF9800;
 }
 
-.youtube-link a:hover {
+.youtube-link a {
+  transition: all .2s ease;  
   color: #ff2020;
 }
 
