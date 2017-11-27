@@ -125,16 +125,9 @@ div.heading {
   color: white;
 }
 
-.portfolio img {
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-
 .image-box, .info-box {
   background-color: #dcdcdc;
   width: 500px;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
   color: #2e363b
 }
 
@@ -279,8 +272,6 @@ a:hover {
   width: 500px;
   position: absolute;
   background-color: #133542e0;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
   padding-top: 30px;
   height: 274px;
   font-weight: 300;

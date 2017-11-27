@@ -89,7 +89,7 @@ class Portfolio extends React.Component {
     return (
       <div className="youtube-link">
         <ModalVideo videoId={ytlink} isOpen={this.state.isOpen} onClose={() => this.setState({isOpen: false})}/>
-        <a href="#" onClick={this.openModal}><i className="fa fa-youtube-play fa-2" aria-hidden={true}></i>demo</a>
+        <a href="#" onClick={this.openModal}><i className="fa fa-youtube-play fa-2" aria-hidden={true}></i>Watch a demo</a>
       </div>
     )
   }
