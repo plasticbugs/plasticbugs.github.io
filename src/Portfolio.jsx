@@ -1,6 +1,7 @@
 import React from 'react';
 import ModalVideo from 'react-modal-video';
 
+
 class Portfolio extends React.Component {
   constructor(props) {
     super(props);
@@ -17,7 +18,8 @@ class Portfolio extends React.Component {
             'Trained a computer vision model with Microsoft’s Azure Computer Vision API to differentiate tattoo styles and auto-tag uploaded images by style',
             'Implemented infinite scrolling with React to make the home page more dynamic and browsable'],
           ghlink: 'https://github.com/plasticbugs/ynck.io',
-          weblink: 'http://ynck.io'
+          weblink: 'http://ynck.io',
+          showDetails: false
         },
         {
           title: 'Podcast Machine',
@@ -30,7 +32,8 @@ class Portfolio extends React.Component {
             'Implemented asynchronous video to MP3 transcoding with worker queue'
           ],
           ghlink: 'https://github.com/plasticbugs/podcasty',
-          videoDemo: 'wKugnd3eHaA'
+          videoDemo: 'wKugnd3eHaA',
+          showDetails: false
         },
         {
           title: '3DStxt',
@@ -40,9 +43,11 @@ class Portfolio extends React.Component {
             'Approx. 2000 active users',
             'Designed and architected using best practices with Ruby on Rails and jQuery',
             'Integrated the Amazon Product Advertising API to utilize product images and insert referral links',
-            'Enabled custom URLs with Rails Router'
+            'Enabled custom URLs with Rails Router',
           ],
-          weblink: 'http://3dstxt.com/scott'        },
+          weblink: 'http://3dstxt.com/scott',
+          showDetails: false
+        },
         {
           title: 'Gimpshop',
           description: 'A decade ago, I forked the GIMP project and rearranged it to work like Adobe Photoshop. Since its creation, Gimpshop has been downloaded hundreds of thousands of times.',
@@ -63,10 +68,13 @@ class Portfolio extends React.Component {
               )
             }()
           ],
-          weblink: 'https://en.wikipedia.org/wiki/GIMPshop'        }
+          weblink: 'https://en.wikipedia.org/wiki/GIMPshop',
+          showDetails: false
+        }
       ]
     }
     this.openModal = this.openModal.bind(this);
+    this.renderProject = this.renderProject.bind(this);
   }
 
   renderLink(link, icon) {
@@ -110,8 +118,22 @@ class Portfolio extends React.Component {
     }
   }
 
+  renderDetails(bullets) {
+    if(bullets) {
+      return(
+        <ul className="detail-list">
+        {
+          bullets.map((bullet, index) => {
+            return <li key={index}>{bullet}</li>
+          })
+        }
+        </ul>
+      )
+    }
+  }
+
   renderProject(project, index) {
-    let ghlink, weblink, vidlink;
+    let ghlink, weblink, vidlink, details;
     if(project.ghlink) {
       ghlink = this.renderLink(project.ghlink, 'github');
     }
@@ -121,32 +143,45 @@ class Portfolio extends React.Component {
     if(project.videoDemo) {
       vidlink = this.renderYouTubeModal(project.videoDemo);
     }
+    if(project.showDetails) {
+      details = this.renderDetails(project.bullets);
+    }
     return(
       <li key={project.imageUrl}>
       <div className="image-box">
         {this.renderBullets(project)}
         <img 
-          src={`./images/${project.imageUrl}`} 
-          width="500" 
-          height="304"
+          src={`./images/${project.imageUrl}`}
         />
       </div>
       <div className="info-box">
-        <div className="external-links">{vidlink} {weblink} {ghlink}</div>
-        <p className="title">
+        <div className="title">
+          <div className="external-links">{vidlink} {weblink} {ghlink}</div>
           {project.title}
-        </p>
+        </div>
         <p className="description">
           {project.description}
+          <a href="#" className="details" onClick={(e)=> {e.preventDefault(); this.toggleDetails(index)}}>More info...</a>
         </p>
+        {details}
       </div>
     </li>
     );
   }
 
+  toggleDetails(index) {
+    let projectsCopy = this.state.projects.map(project => {
+      return Object.assign({}, project);
+    });
+    projectsCopy[index].showDetails = !projectsCopy[index].showDetails;
+    this.setState({projects: projectsCopy});
+  }
+
   render() {
     return (
       <section className="portfolio">
+            <script src="https://gist.github.com/plasticbugs/b6a6be67c4d73041517fd554c1cc5fc1.js"></script>
+
         <div className="title heading">Software Engineering Projects</div>
         <ul className="project-list">
           {this.state.projects.map( (project, index) => {

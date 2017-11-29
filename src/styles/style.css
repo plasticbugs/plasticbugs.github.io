@@ -92,6 +92,7 @@ div.heading {
   line-height: 1.3em;
   padding-bottom: 5px;
   padding-left: 10px;
+  overflow: hidden;
 }
 
 /* .skills h2 {
@@ -119,7 +120,7 @@ div.heading {
 } */
 
 .info-box .title {
-  padding-top: 6px;
+  padding: 6px 5px 6px 10px;
   margin-bottom: 0;
   background-color: #000000ba;
   color: white;
@@ -127,7 +128,6 @@ div.heading {
 
 .image-box, .info-box {
   background-color: #dcdcdc;
-  width: 500px;
   color: #2e363b
 }
 
@@ -138,10 +138,6 @@ div.heading {
 .description, .image-box, .info-box {
   margin: 0 auto;
   text-align: left;
-}
-
-.image-box {
-  height: 304px;
 }
 
 .description {
@@ -191,6 +187,10 @@ div.heading {
   color: #FF9800;
 }
 
+.fa {
+  white-space: nowrap;
+}
+
 .youtube-link a {
   transition: all .2s ease;  
   color: #ff2020;
@@ -198,7 +198,6 @@ div.heading {
 
 .external-links {
   float: right;
-  margin-top: 5px;
 }
 
 .youtube-link {
@@ -275,6 +274,7 @@ a:hover {
   padding-top: 30px;
   height: 274px;
   font-weight: 300;
+  line-height: 1.2em;
 }
 
 .bullets:hover {
@@ -288,4 +288,119 @@ a:hover {
   padding: 0 20px;
   width: 460px;
   font-size: .8em;
+}
+
+pre {
+  text-align: left;
+  font-family: "Operator Mono SSm A", "Operator Mono SSm B";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.6em;
+  font-size: .8em;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: 75%;
+  height: 75%;
+  transform: translate(-50%, -50%);
+}
+
+.hljs-keyword {
+  font-style: italic;
+}
+
+.modal {
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0px;
+  background-color: #000000bd;
+  width: 100%;
+  height: 100%;
+}
+
+.code-title {
+  font-style: italic;
+  font-size: 2em;
+  background-color: #0e0c0cd6;
+  padding: 13px;
+  color:#81a2be;
+}
+
+.code-container {
+  background-color: red;
+}
+
+.image-box img {
+  width: 100%;
+}
+
+.image-box {
+  line-height: 0px;
+}
+
+.details {
+  display: none;
+}
+
+ul.detail-list {
+  padding: 0 10px 5px 10px;
+  font-size: .7em;
+  color: #036075;
+}
+
+a.details {
+  color: #0099bd;
+}
+
+ul.detail-list li {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+
+@media only screen 
+and (min-device-width: 320px) 
+and (max-device-width: 568px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: portrait) {
+  p.profile-links {
+    width: 100%;
+    margin: auto;
+    margin-top: 50px;
+  }
+
+  .profile-links a {
+    display: inline-block;
+    padding-right: 0px;
+    line-height: 3em;    
+  }
+
+  .portfolio li {
+    width: 250px;
+  }
+
+  .bullets {
+    display: none;
+  }
+
+  .details {
+    display: block;
+  }
+
+}
+
+@media screen and (orientation:portrait) {
+  .bullets {
+    display: none;
+  }
+  .info-box a {
+    display: block;
+  }
+
+  .details {
+    display: block;
+  }
 }

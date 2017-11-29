@@ -1,16 +1,24 @@
 import React from 'react';
+import Modal from './Modal.jsx';
 
 class Skills extends React.Component {
   constructor(props) {
     super(props);
   }
 
+  toggleModal() {
+
+  }
+
   render() {
+    // if(this.state.showModal) {
+
+    // }
     return (
       <div className="skills" id="skills">
         <div className="title heading">{`{...code}`}</div>
         <ul>
-          <li>JavaScript ES6</li>
+          <li onClick={this.toggleModal}>JavaScript ES6</li>
           <li>React</li>
           <li>Node.js</li>
           <li>React Router</li>
@@ -26,6 +34,7 @@ class Skills extends React.Component {
           <li>HTML5</li>
           <li>CSS3</li>
         </ul>
+        {/* < Modal /> */}
       </div>
     )
   }

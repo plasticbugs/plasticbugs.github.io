@@ -17,7 +17,7 @@ class Header extends React.Component {
         </p>
         <p className="profile-links">
           <a href="./images/smoschella_resume.pdf">
-          <i className="fa fa-file-pdf-o fa-2" aria-hidden="true"></i>&nbsp;My Resume
+          <i className="fa fa-file-pdf-o fa-2" aria-hidden="true"></i>&nbsp;My&nbsp;Resume
           </a>
           <a href="https://www.linkedin.com/in/scott-moschella/">
           <i className="fa fa-linkedin" aria-hidden="true"></i>&nbsp;LinkedIn
