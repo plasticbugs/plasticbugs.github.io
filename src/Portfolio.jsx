@@ -30,7 +30,7 @@ class Portfolio extends React.Component {
             'Implemented asynchronous video to MP3 transcoding with worker queue'
           ],
           ghlink: 'https://github.com/plasticbugs/podcasty',
-          videoDemo: 'WzPvl2aQLkc'
+          videoDemo: 'wKugnd3eHaA'
         },
         {
           title: '3DStxt',
