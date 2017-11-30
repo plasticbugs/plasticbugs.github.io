@@ -60,8 +60,7 @@ body {
 }
 
 .portfolio {
-  background-color: #e4f1f9;
-  color: #2e363b;
+  color: #f5f5f5;
   padding: 40px 20px;
   text-align: center;
   font-family: 'Whitney SSm A','Whitney SSm B';
@@ -204,14 +203,20 @@ div.heading {
   display: inline
 }
 
+.skills-container {
+  width: 100%;
+  background-color: #e4f1f9;  
+}
+
 .skills {
+  color: #2e363b;
   text-align: center;
   width: 60%;
-  margin: 50px auto;
+  margin: 0px auto;
+  padding: 50px 0px;
 }
 
 .skills div.heading {
-  color: #f5f5f5;
   font-family: 'Whitney SSm A','Whitney SSm B';
   margin-bottom: 10px;
 }
@@ -360,6 +365,25 @@ ul.detail-list li {
   margin-bottom: 1em;
 }
 
+.code-block {
+  margin-left: -50px;
+}
+
+.skills p {
+  font-size: .7em;
+  margin-bottom: 14px;
+  margin-top: -4px;
+  color: #036075;
+}
+
+.skills pre {
+  cursor: initial;
+}
+
+.skills li:hover {
+  color: #FF5722;
+  cursor: pointer;
+}
 
 @media only screen 
 and (min-device-width: 320px) 
@@ -406,5 +430,9 @@ and (orientation: portrait) {
 
   .external-links {
     text-align: right;
+  }
+
+  .portfolio li {
+    width: 100%;
   }
 }

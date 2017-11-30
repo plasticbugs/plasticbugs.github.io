@@ -20439,8 +20439,8 @@ var App = function (_React$Component) {
         'div',
         null,
         _react2.default.createElement(_Header2.default, null),
-        _react2.default.createElement(_Portfolio2.default, null),
-        _react2.default.createElement(_Skills2.default, null)
+        _react2.default.createElement(_Skills2.default, null),
+        _react2.default.createElement(_Portfolio2.default, null)
       );
     }
   }]);
@@ -24178,103 +24178,135 @@ var Skills = function (_React$Component) {
   function Skills(props) {
     _classCallCheck(this, Skills);
 
-    return _possibleConstructorReturn(this, (Skills.__proto__ || Object.getPrototypeOf(Skills)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (Skills.__proto__ || Object.getPrototypeOf(Skills)).call(this, props));
+
+    _this.state = {
+      skills: [{
+        title: 'JavaScript ES6',
+        codeSnippet: '\n          const mergeSort = function(array) {\n            if(array.length === 1) {\n              return array;\n            }\n            let middle = Math.floor(array.length / 2);\n            let left = array.slice(0, middle);\n            let right = array.slice(middle);\n          \n            return merge(mergeSort(left), mergeSort(right));\n          }\n          \n          const merge = function(left, right) {\n            let solution = [];\n            while(left.length && right.length) {\n              if(left[0] > right[0]) {\n                solution.push(right.shift());\n              } else {\n                solution.push(left.shift());\n              }\n            }\n          \n            while(left.length) {\n              solution.push(left.shift());\n            }\n          \n            while(right.length) {\n              solution.push(right.shift());\n            }\n            return solution;\n          }',
+        showModal: false
+      }, {
+        title: 'React',
+        codeSnippet: '\n          const hello = "I\'m some react code!"\n          ',
+        showModal: false
+
+      }, {
+        title: 'Node.js',
+        codeSnippet: '',
+        showModal: false
+
+      }, {
+        title: 'React Router',
+        codeSnippet: '',
+        showModal: false
+
+      }, {
+        title: 'Redux',
+        codeSnippet: '',
+        showModal: false
+
+      }, {
+        title: 'Express.js',
+        codeSnippet: '',
+        showModal: false
+
+      }, {
+        title: 'MySQL/PostgreSQL',
+        codeSnippet: '',
+        showModal: false
+
+      }, {
+        title: 'MongoDB',
+        codeSnippet: '',
+        showModal: false
+
+      }, {
+        title: 'Redis',
+        codeSnippet: '',
+        showModal: false
+
+      }, {
+        title: 'Webpack',
+        codeSnippet: '',
+        showModal: false
+
+      }, {
+        title: 'Jest & Enzyme',
+        codeSnippet: '',
+        showModal: false
+
+      }, {
+        title: 'Mocha & Chai',
+        codeSnippet: '',
+        showModal: false
+
+      }, {
+        title: 'Ruby on Rails',
+        codeSnippet: '',
+        showModal: false
+
+      }, {
+        title: 'HTML5',
+        codeSnippet: '',
+        showModal: false
+
+      }, {
+        title: 'CSS3',
+        codeSnippet: '',
+        showModal: false
+      }]
+    };
+    return _this;
   }
 
   _createClass(Skills, [{
     key: 'toggleModal',
-    value: function toggleModal() {}
+    value: function toggleModal(index) {
+      console.log(index);
+      var skillsCopy = this.state.skills.map(function (skill) {
+        return Object.assign({}, skill);
+      });
+      skillsCopy[index].showModal = !skillsCopy[index].showModal;
+      this.setState({ skills: skillsCopy });
+    }
   }, {
     key: 'render',
     value: function render() {
-      // if(this.state.showModal) {
+      var _this2 = this;
 
-      // }
       return _react2.default.createElement(
         'div',
-        { className: 'skills', id: 'skills' },
+        { className: 'skills-container' },
         _react2.default.createElement(
           'div',
-          { className: 'title heading' },
-          '{...code}'
-        ),
-        _react2.default.createElement(
-          'ul',
-          null,
+          { className: 'skills', id: 'skills' },
           _react2.default.createElement(
-            'li',
-            { onClick: this.toggleModal },
-            'JavaScript ES6'
+            'div',
+            { className: 'title heading' },
+            '{...code}'
           ),
           _react2.default.createElement(
-            'li',
+            'p',
             null,
-            'React'
+            'Click these topics to see code examples'
           ),
           _react2.default.createElement(
-            'li',
+            'ul',
             null,
-            'Node.js'
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            'React Router'
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            'Redux'
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            'Express.js'
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            'MySQL/PostgreSQL'
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            'MongoDB'
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            'Redis'
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            'Webpack'
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            'Jest & Enzyme'
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            'Mocha & Chai'
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            'Ruby on Rails'
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            'HTML5'
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            'CSS3'
+            this.state.skills.map(function (skill, index) {
+              var modal = void 0;
+              if (skill.showModal) {
+                modal = _react2.default.createElement(_Modal2.default, { title: skill.title, codeSnippet: skill.codeSnippet });
+              }
+              return _react2.default.createElement(
+                'li',
+                { key: index, onClick: function onClick() {
+                    _this2.toggleModal(index);
+                  } },
+                skill.title,
+                modal
+              );
+            })
           )
         )
       );
@@ -24329,7 +24361,7 @@ var Modal = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: 'code-container' },
-          _react2.default.createElement(_SomeCode2.default, null)
+          _react2.default.createElement(_SomeCode2.default, { codeSnippet: this.props.codeSnippet, title: this.props.title })
         )
       );
     }
@@ -24385,16 +24417,22 @@ var SomeCode = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'pre',
-        null,
+        { onClick: function onClick(e) {
+            e.stopPropagation();
+          } },
         _react2.default.createElement(
           'code',
           null,
           _react2.default.createElement(
             'h2',
             { className: 'nohighlight code-title' },
-            'Some Title'
+            this.props.title + ' Snippet'
           ),
-          '\n    const mergeSort = function(array) {\n      if(array.length === 1) {\n        return array;\n      }\n      let middle = Math.floor(array.length / 2);\n      let left = array.slice(0, middle);\n      let right = array.slice(middle);\n    \n      return merge(mergeSort(left), mergeSort(right));\n    }\n    \n    const merge = function(left, right) {\n      let solution = [];\n      while(left.length && right.length) {\n        if(left[0] > right[0]) {\n          solution.push(right.shift());\n        } else {\n          solution.push(left.shift());\n        }\n      }\n    \n      while(left.length) {\n        solution.push(left.shift());\n      }\n    \n      while(right.length) {\n        solution.push(right.shift());\n      }\n      return solution;\n    }'
+          _react2.default.createElement(
+            'div',
+            { className: 'code-block' },
+            this.props.codeSnippet
+          )
         )
       );
     }

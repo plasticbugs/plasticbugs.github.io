@@ -12,8 +12,8 @@ class App extends React.Component {
     return (
       <div>
         < Header />
-        < Portfolio />
         < Skills />
+        < Portfolio />
       </div>
     );
   }

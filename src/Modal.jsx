@@ -9,7 +9,7 @@ class Modal extends React.Component {
   render() {
     return <div className="modal">
       <div className="code-container">
-      < SomeCode /></div>
+      < SomeCode codeSnippet={this.props.codeSnippet} title={this.props.title} /></div>
     </div>
   }
 }
