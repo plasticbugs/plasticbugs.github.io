@@ -8,10 +8,10 @@ module.exports = {
     './src/styles/style.css'
   ],
   plugins: [
-    // new UglifyJSPlugin({
-    //   test: /\.js($|\?)/i,
-    //   sourceMap: true
-    // }),
+    new UglifyJSPlugin({
+      test: /\.js($|\?)/i,
+      sourceMap: true
+    }),
     new ExtractTextPlugin("./css/style.min.css")
   ],
   output: {

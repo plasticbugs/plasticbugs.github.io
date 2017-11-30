@@ -366,7 +366,9 @@ ul.detail-list li {
 }
 
 .code-block {
-  margin-left: -50px;
+  /* margin-left: -50px; */
+  min-height: 100px;
+  overflow: scroll;
 }
 
 .skills p {
