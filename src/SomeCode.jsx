@@ -8,12 +8,13 @@ class SomeCode extends React.Component {
 
   componentDidMount() {
     var current = ReactDOM.findDOMNode(this);
-    hljs.highlightBlock(current);
+    // hljs.highlightBlock(current);
+    Prism.highlightElement(current);
   }
 
   render() {
-    return <pre onClick={(e)=>{e.stopPropagation()}}><code><h2 className="nohighlight code-title">{`${this.props.title} Snippet`}</h2>
-    <div className="code-block">{this.props.codeSnippet}</div></code></pre>
+    return <pre className={`language-${this.props.codeLang}`}><code>
+    <div>{this.props.codeSnippet}</div></code></pre>
   }
 }
 

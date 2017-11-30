@@ -9,7 +9,10 @@ class Modal extends React.Component {
   render() {
     return <div className="modal">
       <div className="code-container">
-      < SomeCode codeSnippet={this.props.codeSnippet} title={this.props.title} /></div>
+      <div className="code-block" onClick={(e)=>{e.stopPropagation()}}>
+      <h2 className="code-title">{`${this.props.title} Snippet`}<span className="gh-link"><a href="#" onClick={(e)=>{e.preventDefault();console.log("click")}}>Heyoo</a></span></h2>
+      
+      < SomeCode codeSnippet={this.props.codeSnippet} codeLang={this.props.codeLang} /></div></div>
     </div>
   }
 }

@@ -40,7 +40,8 @@ const merge = function(left, right) {
   }
   return solution;
           }`}</div>)},
-          showModal: false
+          showModal: false,
+          codeLang: 'javascript'
         },
         {
           title: 'React',
@@ -98,23 +99,24 @@ class PostView extends React.Component {
 module.exports = PostView;`
             }</div>)
           },
-          showModal: false
-
+          showModal: false,
+          codeLang: 'jsx'
         },
         {
           title: 'Node.js',
           codeSnippet: function(){
             return (<div>{`
           `}</div>)},
-          showModal: false
-
+          showModal: false,
+          codeLang: 'javascript'
         },
         {
           title: 'React Router',
           codeSnippet: function(){
             return (<div>{`
           `}</div>)},
-          showModal: false
+          showModal: false,
+          codeLang: 'jsx'
 
         },
         {
@@ -122,7 +124,8 @@ module.exports = PostView;`
           codeSnippet: function(){
             return (<div>{`
           `}</div>)},
-          showModal: false
+          showModal: false,
+          codeLang: 'jsx'
 
         },
         {
@@ -130,7 +133,8 @@ module.exports = PostView;`
           codeSnippet: function(){
             return (<div>{`
           `}</div>)},
-          showModal: false
+          showModal: false,
+          codeLang: 'javascript'
 
         },
         {
@@ -138,71 +142,71 @@ module.exports = PostView;`
           codeSnippet: function(){
             return (<div>{`
           `}</div>)},
-          showModal: false
-
+          showModal: false,
+          codeLang: 'javascript'
         },
         {
           title: 'MongoDB',
           codeSnippet: function(){
             return (<div>{`
           `}</div>)},
-          showModal: false
-
+          showModal: false,
+          codeLang: 'javascript'
         },
         {
           title: 'Redis',
           codeSnippet: function(){
             return (<div>{`
           `}</div>)},
-          showModal: false
-
+          showModal: false,
+          codeLang: 'javascript'
         },
         {
           title: 'Webpack',
           codeSnippet: function(){
             return (<div>{`
-          const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-          const ExtractTextPlugin = require('extract-text-webpack-plugin');
-          
-          module.exports = {
-            entry: [
-              './src/Main.jsx',
-              './src/styles/reset.css',
-              './src/styles/style.css'
-            ],
-            plugins: [
-              new UglifyJSPlugin({
-                test: /\.js($|\?)/i,
-                sourceMap: true
-              }),
-              new ExtractTextPlugin("./css/style.min.css")
-            ],
-            output: {
-              filename: './js/bundle.js'
-            },
-            module: {
-              rules: [
-                {
-                  test: /\.jsx?$/,
-                  exclude: /(node_modules)/,
-                  use: {
-                    loader: 'babel-loader'
-                  }
-                },
-                {
-                  test: /\.css$/,
-                  exclude: /(node_modules)/,
-                  use: ExtractTextPlugin.extract({
-                    use: 'css-loader?minimize'
-                  })
-                }
-              ]
-            }
-          };
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+module.exports = {
+  entry: [
+    './src/Main.jsx',
+    './src/styles/reset.css',
+    './src/styles/style.css'
+  ],
+  plugins: [
+    new UglifyJSPlugin({
+      test: /\.js($|\?)/i,
+      sourceMap: true
+    }),
+    new ExtractTextPlugin("./css/style.min.css")
+  ],
+  output: {
+    filename: './js/bundle.js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'babel-loader'
+        }
+      },
+      {
+        test: /\.css$/,
+        exclude: /(node_modules)/,
+        use: ExtractTextPlugin.extract({
+          use: 'css-loader?minimize'
+        })
+      }
+    ]
+  }
+};
           
           `}</div>)},
-          showModal: false
-
+          showModal: false,
+          codeLang: 'javascript'
         },
         {
           title: 'Jest & Enzyme',
@@ -279,96 +283,98 @@ describe('App', () => {
 });`
           }</div>)},
           showModal: false,
-          snippetLink: 'https://github.com/plasticbugs/gh-followers/blob/master/app/__tests__/app.test.jsx'
+          snippetLink: 'https://github.com/plasticbugs/gh-followers/blob/master/app/__tests__/app.test.jsx',
+          codeLang: 'javascript'
 
         },
         {
           title: 'Mocha & Chai',
           codeSnippet: function(){
             return (<div>{`
-          const dotenv = require('dotenv');
-          dotenv.config();
-          
-          var chai = require('chai');
-          var chaiHttp = require('chai-http');
-          var server = require('../server/server-config');
-          var should = chai.should();
-          
-          chai.use(chaiHttp);
-          
-          describe('The search API', function() {
-            it('should return a status code of 200 on /api/search?q=querystring GET', function(done) {
-              chai.request(server)
-                .get('/api/search?q=querystring')
-                .end(function(err, res){
-                  res.should.have.status(200);
-                  done();
-                });
-            });
-            
-            it('should return an array when searching /api/search?q=querystring GET', function(done) {
-              chai.request(server)
-                .get('/api/search?q=querystring')
-                .end(function(err, res){
-                  res.body.should.be.an('array');
-                  done();
-                });
-            });
-            
-            it('should return a non-zero length array when searching for data contained in the db', function(done) {
-              chai.request(server)
-              .get('/api/search?q=new+york')
-              .end(function(err, res){
-                res.body.length.should.be.above(5);
-                done();
-              });
-            });
-            
-            it('should handle searches (like néw+yørk) that have accents or non-standard characters', function(done) {
-              chai.request(server)
-              .get('/api/search?q=néw+yørk')
-              .end(function(err, res){
-                res.body.length.should.be.above(5);
-                done();
-              });
-            });
-            
-            it('should handle searches for text in the db (like Beyoncé) that has accents or non-standard characters', function(done) {
-              chai.request(server)
-              .get('/api/search?q=beyonce')
-              .end(function(err, res){
-                res.body.length.should.be.above(5);
-                done();
-              });
-            });
-          });
+const dotenv = require('dotenv');
+dotenv.config();
+
+var chai = require('chai');
+var chaiHttp = require('chai-http');
+var server = require('../server/server-config');
+var should = chai.should();
+
+chai.use(chaiHttp);
+
+describe('The search API', function() {
+  it('should return a status code of 200 on /api/search?q=querystring GET', function(done) {
+    chai.request(server)
+      .get('/api/search?q=querystring')
+      .end(function(err, res){
+        res.should.have.status(200);
+        done();
+      });
+  });
+  
+  it('should return an array when searching /api/search?q=querystring GET', function(done) {
+    chai.request(server)
+      .get('/api/search?q=querystring')
+      .end(function(err, res){
+        res.body.should.be.an('array');
+        done();
+      });
+  });
+  
+  it('should return a non-zero length array when searching for data contained in the db', function(done) {
+    chai.request(server)
+    .get('/api/search?q=new+york')
+    .end(function(err, res){
+      res.body.length.should.be.above(5);
+      done();
+    });
+  });
+  
+  it('should handle searches (like néw+yørk) that have accents or non-standard characters', function(done) {
+    chai.request(server)
+    .get('/api/search?q=néw+yørk')
+    .end(function(err, res){
+      res.body.length.should.be.above(5);
+      done();
+    });
+  });
+  
+  it('should handle searches for text in the db (like Beyoncé) that has accents or non-standard characters', function(done) {
+    chai.request(server)
+    .get('/api/search?q=beyonce')
+    .end(function(err, res){
+      res.body.length.should.be.above(5);
+      done();
+    });
+  });
+});
           `}</div>)},
           showModal: false,
-          snippetLink: 'https://github.com/plasticbugs/search-demo/blob/master/test/server-test.js'
-
+          snippetLink: 'https://github.com/plasticbugs/search-demo/blob/master/test/server-test.js',
+          codeLang: 'javascript'
         },
         {
           title: 'Ruby on Rails',
           codeSnippet: function(){
             return (<div>{`
             `}</div>)},
-          showModal: false
-
+          showModal: false,
+          codeLang: 'ruby'
         },
         {
           title: 'HTML5',
           codeSnippet: function(){
             return (<div>{`
             `}</div>)},
-          showModal: false
-
+          showModal: false,
+          codeLang: 'markup'
         },
         {
           title: 'CSS3',
           codeSnippet: function(){
             return (<div>{`
             `}</div>)},
-          showModal: false
+          showModal: false,
+          codeLang: 'css'
         }
       ]
     }
@@ -385,14 +391,14 @@ describe('App', () => {
     return (
       <div className="skills-container"><div className="skills" id="skills">
         <div className="title heading">{`{...code}`}</div>
-        {/* <p>Click these topics to see code examples</p> */}
+        <p>Click these topics to see code examples</p>
         <ul>
           {this.state.skills.map( ( skill, index ) => {
             let modal;
             if(skill.showModal) {
-              modal = < Modal title={skill.title} codeSnippet={skill.codeSnippet()} />
+              modal = < Modal title={skill.title} codeSnippet={skill.codeSnippet()} codeLang={skill.codeLang} />
             }
-            return <li key={index} >{skill.title}{modal}</li>
+            return <li key={index} onClick={()=>{this.toggleModal(index)}}>{skill.title}{modal}</li>
           })}
         </ul>
       </div></div>

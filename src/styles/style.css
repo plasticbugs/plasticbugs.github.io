@@ -94,10 +94,6 @@ div.heading {
   overflow: hidden;
 }
 
-/* .skills h2 {
-  font-size: 1.2em;
-  margin-bottom: 6px
-} */
 /* 
 .skills li {
   line-height: 1.3em
@@ -295,7 +291,7 @@ a:hover {
   font-size: .8em;
 }
 
-pre {
+.code-block {
   text-align: left;
   font-family: "Operator Mono SSm A", "Operator Mono SSm B";
   font-style: normal;
@@ -309,9 +305,12 @@ pre {
   width: 75%;
   height: 75%;
   transform: translate(-50%, -50%);
+  overflow: auto;
+  background-color: #272823;
+  overflow: auto;  
 }
 
-.hljs-keyword {
+pre.language-jsx .keyword {
   font-style: italic;
 }
 
@@ -365,12 +364,6 @@ ul.detail-list li {
   margin-bottom: 1em;
 }
 
-.code-block {
-  /* margin-left: -50px; */
-  min-height: 100px;
-  overflow: scroll;
-}
-
 .skills p {
   font-size: .7em;
   margin-bottom: 14px;
@@ -378,7 +371,12 @@ ul.detail-list li {
   color: #036075;
 }
 
-.skills pre {
+.gh-link {
+  float: right;
+  font-size: .8em;
+}
+
+.code-block {
   cursor: initial;
 }
 
@@ -436,5 +434,11 @@ and (orientation: portrait) {
 
   .portfolio li {
     width: 100%;
+  }
+}
+
+@media screen and (orientation:landscape) {
+  .modal-video-body {
+    width: 80%;
   }
 }
