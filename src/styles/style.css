@@ -403,4 +403,8 @@ and (orientation: portrait) {
   .details {
     display: block;
   }
+
+  .external-links {
+    text-align: right;
+  }
 }

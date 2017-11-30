@@ -20541,9 +20541,9 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactModalVideo = __webpack_require__(46);
+var _ModalVideoWrapper = __webpack_require__(83);
 
-var _reactModalVideo2 = _interopRequireDefault(_reactModalVideo);
+var _ModalVideoWrapper2 = _interopRequireDefault(_ModalVideoWrapper);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20562,14 +20562,13 @@ var Portfolio = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Portfolio.__proto__ || Object.getPrototypeOf(Portfolio)).call(this, props));
 
     _this.state = {
-      isOpen: false,
       projects: [{
         title: 'ynck.io - Tattoo Community Portal',
         description: 'Full-stack web app built with Node.js, React, Redux & Postgres. Uses machine-learning to auto-tag and categorize uploaded tattoos by art style.',
         imageUrl: 'ynck-screenshot@2x.png',
         bullets: ['Refactored React-based site with Redux to simplify state management site-wide', 'Architected a relational Postgres database with custom Bookshelf.js ORM queries to handle complex model relationships', 'Trained a computer vision model with Microsoft’s Azure Computer Vision API to differentiate tattoo styles and auto-tag uploaded images by style', 'Implemented infinite scrolling with React to make the home page more dynamic and browsable'],
         ghlink: 'https://github.com/plasticbugs/ynck.io',
-        // videoDemo: '5Uy9etHjxQM',
+        videoDemo: 'Ci2ZJvk3YzE',
         weblink: 'http://ynck.io',
         showDetails: false
       }, {
@@ -20610,7 +20609,6 @@ var Portfolio = function (_React$Component) {
         showDetails: false
       }]
     };
-    _this.openModal = _this.openModal.bind(_this);
     _this.renderProject = _this.renderProject.bind(_this);
     return _this;
   }
@@ -20629,29 +20627,10 @@ var Portfolio = function (_React$Component) {
       );
     }
   }, {
-    key: 'openModal',
-    value: function openModal(e) {
-      e.preventDefault();
-      this.setState({ isOpen: true });
-    }
-  }, {
     key: 'renderYouTubeModal',
     value: function renderYouTubeModal(ytlink) {
-      var _this2 = this;
-
-      return _react2.default.createElement(
-        'div',
-        { className: 'youtube-link' },
-        _react2.default.createElement(_reactModalVideo2.default, { videoId: ytlink, isOpen: this.state.isOpen, onClose: function onClose() {
-            return _this2.setState({ isOpen: false });
-          } }),
-        _react2.default.createElement(
-          'a',
-          { href: '#', onClick: this.openModal },
-          _react2.default.createElement('i', { className: 'fa fa-youtube-play fa-2', 'aria-hidden': true }),
-          'Watch a demo'
-        )
-      );
+      console.log(ytlink);
+      return _react2.default.createElement(_ModalVideoWrapper2.default, { videoId: ytlink });
     }
   }, {
     key: 'renderBullets',
@@ -20692,7 +20671,7 @@ var Portfolio = function (_React$Component) {
   }, {
     key: 'renderProject',
     value: function renderProject(project, index) {
-      var _this3 = this;
+      var _this2 = this;
 
       var ghlink = void 0,
           weblink = void 0,
@@ -20745,7 +20724,7 @@ var Portfolio = function (_React$Component) {
             _react2.default.createElement(
               'a',
               { href: '#', className: 'details', onClick: function onClick(e) {
-                  e.preventDefault();_this3.toggleDetails(index);
+                  e.preventDefault();_this2.toggleDetails(index);
                 } },
               'More info...'
             )
@@ -20766,7 +20745,7 @@ var Portfolio = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this4 = this;
+      var _this3 = this;
 
       return _react2.default.createElement(
         'section',
@@ -20781,7 +20760,7 @@ var Portfolio = function (_React$Component) {
           'ul',
           { className: 'project-list' },
           this.state.projects.map(function (project, index) {
-            return _this4.renderProject(project, index);
+            return _this3.renderProject(project, index);
           })
         )
       );
@@ -24437,6 +24416,80 @@ module.exports = SomeCode;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 81 */,
+/* 82 */,
+/* 83 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactModalVideo = __webpack_require__(46);
+
+var _reactModalVideo2 = _interopRequireDefault(_reactModalVideo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ModalVideoWrapper = function (_React$Component) {
+  _inherits(ModalVideoWrapper, _React$Component);
+
+  function ModalVideoWrapper(props) {
+    _classCallCheck(this, ModalVideoWrapper);
+
+    var _this = _possibleConstructorReturn(this, (ModalVideoWrapper.__proto__ || Object.getPrototypeOf(ModalVideoWrapper)).call(this, props));
+
+    _this.state = {
+      isOpen: false
+    };
+    _this.openModal = _this.openModal.bind(_this);
+    return _this;
+  }
+
+  _createClass(ModalVideoWrapper, [{
+    key: 'openModal',
+    value: function openModal(e) {
+      e.preventDefault();
+      this.setState({ isOpen: true });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'youtube-link' },
+        _react2.default.createElement(_reactModalVideo2.default, { channel: 'youtube', isOpen: this.state.isOpen, videoId: this.props.videoId, onClose: function onClose() {
+            return _this2.setState({ isOpen: false });
+          } }),
+        _react2.default.createElement(
+          'a',
+          { href: '#', onClick: this.openModal },
+          _react2.default.createElement('i', { className: 'fa fa-youtube-play fa-2', 'aria-hidden': true }),
+          'Watch a demo'
+        )
+      );
+    }
+  }]);
+
+  return ModalVideoWrapper;
+}(_react2.default.Component);
+
+module.exports = ModalVideoWrapper;
 
 /***/ })
 /******/ ]);

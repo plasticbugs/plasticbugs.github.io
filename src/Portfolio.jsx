@@ -1,12 +1,11 @@
 import React from 'react';
-import ModalVideo from 'react-modal-video';
+import ModalVideoWrapper from './ModalVideoWrapper.jsx';
 
 
 class Portfolio extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false,
       projects: [
         {
           title: 'ynck.io - Tattoo Community Portal',
@@ -18,7 +17,7 @@ class Portfolio extends React.Component {
             'Trained a computer vision model with Microsoft’s Azure Computer Vision API to differentiate tattoo styles and auto-tag uploaded images by style',
             'Implemented infinite scrolling with React to make the home page more dynamic and browsable'],
           ghlink: 'https://github.com/plasticbugs/ynck.io',
-          // videoDemo: '5Uy9etHjxQM',
+          videoDemo: 'Ci2ZJvk3YzE',
           weblink: 'http://ynck.io',
           showDetails: false
         },
@@ -74,7 +73,6 @@ class Portfolio extends React.Component {
         }
       ]
     }
-    this.openModal = this.openModal.bind(this);
     this.renderProject = this.renderProject.bind(this);
   }
 
@@ -89,17 +87,10 @@ class Portfolio extends React.Component {
     );
   }
 
-  openModal(e) {
-    e.preventDefault();
-    this.setState({isOpen: true});
-  }
-
   renderYouTubeModal(ytlink) {
+    console.log(ytlink)
     return (
-      <div className="youtube-link">
-        <ModalVideo videoId={ytlink} isOpen={this.state.isOpen} onClose={() => this.setState({isOpen: false})}/>
-        <a href="#" onClick={this.openModal}><i className="fa fa-youtube-play fa-2" aria-hidden={true}></i>Watch a demo</a>
-      </div>
+      <ModalVideoWrapper videoId={ytlink} />
     )
   }
 
