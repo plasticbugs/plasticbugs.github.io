@@ -18,6 +18,7 @@ class Portfolio extends React.Component {
             'Trained a computer vision model with Microsoft’s Azure Computer Vision API to differentiate tattoo styles and auto-tag uploaded images by style',
             'Implemented infinite scrolling with React to make the home page more dynamic and browsable'],
           ghlink: 'https://github.com/plasticbugs/ynck.io',
+          // videoDemo: '5Uy9etHjxQM',
           weblink: 'http://ynck.io',
           showDetails: false
         },
