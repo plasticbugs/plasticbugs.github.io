@@ -283,7 +283,7 @@ describe('App', () => {
 });`
           }</div>)},
           showModal: false,
-          snippetLink: 'https://github.com/plasticbugs/gh-followers/blob/master/app/__tests__/app.test.jsx',
+          ghLink: 'https://github.com/plasticbugs/gh-followers/blob/master/app/__tests__/app.test.jsx',
           codeLang: 'javascript'
 
         },
@@ -349,7 +349,7 @@ describe('The search API', function() {
 });
           `}</div>)},
           showModal: false,
-          snippetLink: 'https://github.com/plasticbugs/search-demo/blob/master/test/server-test.js',
+          ghLink: 'https://github.com/plasticbugs/search-demo/blob/master/test/server-test.js',
           codeLang: 'javascript'
         },
         {
@@ -396,7 +396,7 @@ describe('The search API', function() {
           {this.state.skills.map( ( skill, index ) => {
             let modal;
             if(skill.showModal) {
-              modal = < Modal title={skill.title} codeSnippet={skill.codeSnippet()} codeLang={skill.codeLang} />
+              modal = < Modal title={skill.title} ghLink={skill.ghLink} codeSnippet={skill.codeSnippet()} codeLang={skill.codeLang} />
             }
             return <li key={index} onClick={()=>{this.toggleModal(index)}}>{skill.title}{modal}</li>
           })}

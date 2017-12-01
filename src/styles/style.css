@@ -307,10 +307,15 @@ a:hover {
   transform: translate(-50%, -50%);
   overflow: auto;
   background-color: #272823;
-  overflow: auto;  
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-pre.language-jsx .keyword {
+.code-block code[class*="language-"], pre[class*="language-"] {
+  font-family: "Operator Mono SSm A", "Operator Mono SSm B";  
+}
+
+.code-block pre[class*="language-"] .keyword {
   font-style: italic;
 }
 
