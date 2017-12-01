@@ -100,7 +100,8 @@ module.exports = PostView;`
             }</div>)
           },
           showModal: false,
-          codeLang: 'jsx'
+          codeLang: 'jsx',
+          ghLink: 'https://github.com/plasticbugs/reddit-feed-reader/blob/master/src/PostView.jsx'
         },
         {
           title: 'Node.js',
@@ -113,59 +114,364 @@ module.exports = PostView;`
         {
           title: 'React Router',
           codeSnippet: function(){
-            return (<div>{`
-          `}</div>)},
-          showModal: false,
-          codeLang: 'jsx'
+            return (<div>{
+`import React from 'react';
+import { Route, Link, BrowserRouter, Switch, Redirect, withRouter } from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory';
 
+import { connect } from 'react-redux';
+import { search } from './../../actions/actionSearch';
+import { getAllShops } from './../../actions/actionShopInfo';
+
+import Template from './Template';
+import Home from './Home/Home';
+import Profile from './Profile/Profile';
+import Shop from './Shops/Shop';
+import SearchResults from './SearchResults';
+import ClaimShop from './Shops/ClaimShop';
+import AllShops from './Shops/AllShops';
+import Stats from './Stats';
+
+
+class Main extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchSubmitted: false,
+      searchTerm: '',
+      searchType: ''
+    };
+    this.submitSearch = this.submitSearch.bind(this);
+    this.clearSearch = this.clearSearch.bind(this);
+    this.fetchAllShops = this.fetchAllShops.bind(this);
+
+  }
+
+  componentDidMount() {
+    this.fetchAllShops('/api/allShops');
+  }
+
+  submitSearch(e, searchTerm, searchType) {
+    e.preventDefault();
+    this.props.search('/api/search', searchTerm, searchType, () => {
+      this.setState({
+        searchSubmitted: true,
+        searchTerm: searchTerm,
+        searchType: searchType
+      });
+      history.push(\`/search?q=$\{searchTerm\}\`);
+    });
+  }
+
+  clearSearch() {
+    this.setState({
+      searchSubmitted: false
+    });
+  }
+
+  fetchAllShops (url) {
+    this.props.getAllShops(url);
+  }
+
+  render() {
+    return (
+      <div>      
+        <BrowserRouter>
+          <Switch>
+            <Template submitSearch={this.submitSearch} >  
+              <Route exact path="/" render={(props) => this.state.searchSubmitted ? (<Redirect to="/search"/>) : (<Home loggedInUser={loggedInUser} {...props} />)} />
+              <Route path = "/user/:id" render={(props) => this.state.searchSubmitted ? (<Redirect to="/search"/>) : (<Profile {...props} />)} />
+              <Route path = "/shop/:id" render={(props) => this.state.searchSubmitted ? (<Redirect to="/search"/>) : (<Shop viewedUser={props.match.params.id }{...props} />)} />
+              <Route path = "/claimshop" render={(props) => this.state.searchSubmitted ? (<Redirect to="/search"/>) : (<ClaimShop {...props} />)} />
+              <Route path = "/stats" render={(props) => this.state.searchSubmitted ? (<Redirect to="/search"/>) : (<Stats {...props} />)} />
+              <Route path = "/search" render={(props) => (<SearchResults searchType={this.state.searchType} searchTerm={this.state.searchTerm} searchIsLoading={this.props.searchIsLoading} searchResults={this.props.searchResults} clearSearch={this.clearSearch} {...props} />)} />
+              <Route path = "/allShops" render={(props) => this.state.searchSubmitted ? (<Redirect to="/search"/>) : (<AllShops loggedInUser={loggedInUser} {...this.props} />)} />
+            </Template>
+          </Switch>
+        </BrowserRouter>
+      </div>
+    );
+  }
+}
+
+
+const mapStateToProps = (state) => {
+  return {
+    searchIsLoading: state.searchIsLoading,
+    searchResults: state.searchResults,
+    allShops: state.allShops
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    search: (url, searchTerm, searchType, callback) => dispatch(search(url, searchTerm, searchType, callback)),
+    getAllShops: (url) => dispatch(getAllShops(url))
+  };
+};
+
+const history = createHistory();
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);`
+          }</div>)},
+          showModal: false,
+          codeLang: 'jsx',
+          ghLink: 'https://github.com/plasticbugs/ynck.io/blob/master/client/src/components/Main.js'
         },
         {
           title: 'Redux',
           codeSnippet: function(){
-            return (<div>{`
-          `}</div>)},
-          showModal: false,
-          codeLang: 'jsx'
+            return (<div>{
+`export const userDataIsLoading = (state = false, action) => {
+  switch (action.type) {
+  case 'USER_DATA_IS_LOADING':
+    return action.userDataIsLoading;
+  default:
+    return state;
+  }
+};
 
+export const userData = (state = [], action) => {
+  switch (action.type) {
+  case 'FETCH_USER_DATA_SUCCESS':
+    return action.userData;
+  case 'UPDATE_FOLLOWING_SUCCESS':
+    return Object.assign({}, state, {
+      isBeingFollowed: !state.isBeingFollowed
+    });
+  case 'UPDATE_USER_DATA_SUCCESS':
+    return Object.assign({}, state, {
+      userProfile: Object.assign({}, state.userProfile, {
+        first: action.first,
+        last: action.last,
+        profile_description: action.profile_description
+      })
+    });
+  case 'UPDATE_USER_PHOTO_SUCCESS':
+    if (action.photoData.image_type === 'tattoo') {
+      let newArray = [];
+      if (state.tattoo) {
+        newArray = state.tattoo.slice();
+      }
+      newArray.unshift(action.photoData);
+      return Object.assign({}, state, {
+        tattoo: newArray
+      });
+    } else if (action.photoData.image_type === 'design') {
+      let newArray = [];
+      if (state.design) {
+        newArray = state.design.slice();
+      }
+      newArray.unshift(action.photoData);
+      return Object.assign({}, state, {
+        design: newArray
+      });
+    } else if (actton.photoData.image_type === 'inspiration') {
+      let newArray = state.inspiration.slice();
+      newArray.unshift(action.photoData);
+      return Object.assign({}, state, {
+        inspiration: newArray
+      });
+    }
+  case 'PROFILE_FAVORITES_SUCCESS' :
+    let i = action.i;
+    if (action.typeOfImage === 'tattoo') {
+      return Object.assign({}, state, { 
+        tattoo: [
+          ...state.tattoo.slice(0, i), 
+          Object.assign({}, state.tattoo[i], { 
+            isFavorited: !state.tattoo[i].isFavorited
+          }), 
+          ...state.tattoo.slice(i + 1)]
+      });
+    } else if (action.typeOfImage === 'design') {
+      return Object.assign({}, state, {
+        design: [
+          ...state.design.slice(0, i), 
+          Object.assign({}, state.design[i], {
+            isFavorited: !state.design[i].isFavorited
+          }), 
+          ...state.design.slice(i + 1)]
+      });
+    }
+  default:
+    return state;
+  }
+};`
+          }</div>)},
+          showModal: false,
+          codeLang: 'javascript',
+          ghLink: 'https://github.com/plasticbugs/ynck.io/blob/master/client/reducers/reducerUserInfo.js'
         },
         {
           title: 'Express.js',
           codeSnippet: function(){
-            return (<div>{`
-          `}</div>)},
-          showModal: false,
-          codeLang: 'javascript'
+            return (<div>{
+`const express = require('express');
+const router = express.Router();
+const path = require('path');
+const passport = require('../../middleware/passport');
+const ChannelsController = require('../controllers/channels');
+const MessagesController = require('../controllers/messages');
 
+
+router.route('/')
+  .get((req, res) => {
+    res.sendFile(path.join(__dirname, '../../public/index.html'));
+  })
+
+router.get('/auth/google', passport.authenticate('google', {
+  scope: ['https://www.googleapis.com/auth/plus.login', 'https://www.googleapis.com/auth/userinfo.profile']
+}));
+
+router.get('/oauthcallback', passport.authenticate('google', {
+  failureRedirect: '/' }),
+  (req, res) => {
+    res.cookie('loggedIn', true, {path: '/'});
+    req.session.user = req.user;
+    res.redirect('/');
+  }
+);
+
+router.route('/api/stream-search')
+  .post(ChannelsController.findChannel);
+
+router.get('/logout', (req,res) => {
+  res.clearCookie('loggedIn');
+  req.logout();
+  res.redirect('/');
+});
+
+router.get('/api/getcurrentuser', (req,res) => {
+  res.send(req.user);
+});
+
+router.route('/api/user-messages')
+  .get(MessagesController.showMessagesForUser);
+
+router.route('/api/save-message')
+  .post(MessagesController.saveMessage);
+
+module.exports = router;`
+          }</div>)},
+          showModal: false,
+          codeLang: 'javascript',
+          ghLink: 'https://github.com/plasticbugs/twitch-streaming-demo/blob/master/server/routes/main.js'
         },
         {
-          title: 'MySQL/PostgreSQL',
+          title: 'PostgreSQL & Bookshelf ORM',
           codeSnippet: function(){
-            return (<div>{`
-          `}</div>)},
+            return (<div>{
+`const bookshelf = require('../');
+
+const Profile = bookshelf.Model.extend({
+  tableName: 'profiles',
+  auths: function() {
+    return this.hasMany('Auth');
+  },
+  shop: function() {
+    return this.belongsTo('Shop');
+  },
+  images: function() {
+    return this.hasMany('Image');
+  },
+  ratings: function() {
+    return this.belongsToMany('Shop').through('Rating');
+  },
+  favorites: function() {
+    return this.belongsToMany('Image').through('Favorite');
+  },
+  following: function() {
+    return this.belongsToMany('Profile', 'profiles_profiles', 'user_id', 'follower_id');
+  },
+  followers: function() {
+    return this.belongsToMany('Profile', 'profiles_profiles', 'follower_id', 'user_id' );
+  }
+});
+
+module.exports = bookshelf.model('Profile', Profile);`
+          }</div>)},
           showModal: false,
-          codeLang: 'javascript'
+          codeLang: 'javascript',
+          ghLink: 'https://github.com/plasticbugs/ynck.io/blob/master/db/models/profiles.js'
         },
         {
           title: 'MongoDB',
           codeSnippet: function(){
-            return (<div>{`
-          `}</div>)},
+            return (<div>{
+`var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+const moment = require('moment');
+
+var tweetSchema = new Schema({
+  created_at: Date,
+  text: String,
+  user_id: String,
+  searchableText: String
+});
+
+const Tweet = mongoose.model('Tweet', tweetSchema);
+
+module.exports = Tweet;
+
+module.exports.search = (query, callback) => {
+  Tweet.find( { $text: { $search: query, $diacriticSensitive: false } }, {score : { $meta: 'textScore' } } )
+  .sort( { score: { $meta: 'textScore' } } )
+  .lean()
+  .exec( ( err, result ) => {
+    if(err) {
+      callback(err);
+    } else {
+      let formattedResult = result.map( tweet => {
+        let formatted_date = moment(tweet.created_at, 'YYYYMMDD').fromNow();
+        let formattedTweet = {
+          user_id: tweet.user_id,
+          created_at: formatted_date,
+          text: tweet.text
+        }
+        return formattedTweet;
+      });
+      callback(null, formattedResult);
+    }
+  });
+}`
+          }</div>)},
           showModal: false,
-          codeLang: 'javascript'
+          codeLang: 'javascript',
+          ghLink: 'https://github.com/plasticbugs/search-demo/blob/master/server/models/tweet.js'
         },
         {
           title: 'Redis',
           codeSnippet: function(){
-            return (<div>{`
-          `}</div>)},
+            return (<div>{
+`var express = require('express');
+var app = express();
+var builder = require('xmlbuilder');
+var rss = require('./app/utils/feedGen.js');
+var redis = require('redis');
+var client = redis.createClient();
+var cache = require('express-redis-cache')({expire: 3600});
+
+app.get('/feed',cache.route(), function(request, response) {
+  var uploads = request.query.uploads;
+  var channel = request.query.channel;
+  console.log('channel & uploads', uploads, channel);
+  response.contentType('text/xml')
+  rss.generateRSS(channel,uploads, function(rssData) {
+    console.log("doing fresh")
+    response.send(rssData);
+  });
+});`
+          }</div>)},
           showModal: false,
-          codeLang: 'javascript'
+          codeLang: 'javascript',
+          ghLink: 'https://github.com/plasticbugs/podcasty/blob/master/server-config.js'
         },
         {
           title: 'Webpack',
           codeSnippet: function(){
-            return (<div>{`
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+            return (<div>{
+`const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
@@ -202,11 +508,12 @@ module.exports = {
       }
     ]
   }
-};
+};`
           
-          `}</div>)},
+          }</div>)},
           showModal: false,
-          codeLang: 'javascript'
+          codeLang: 'javascript',
+          ghLink: 'https://github.com/plasticbugs/reddit-feed-reader/blob/master/webpack.config.js'
         },
         {
           title: 'Jest & Enzyme',
@@ -290,8 +597,8 @@ describe('App', () => {
         {
           title: 'Mocha & Chai',
           codeSnippet: function(){
-            return (<div>{`
-const dotenv = require('dotenv');
+            return (<div>{
+`const dotenv = require('dotenv');
 dotenv.config();
 
 var chai = require('chai');
@@ -346,8 +653,8 @@ describe('The search API', function() {
       done();
     });
   });
-});
-          `}</div>)},
+});`
+          }</div>)},
           showModal: false,
           ghLink: 'https://github.com/plasticbugs/search-demo/blob/master/test/server-test.js',
           codeLang: 'javascript'

@@ -8,7 +8,6 @@ class SomeCode extends React.Component {
 
   componentDidMount() {
     var current = ReactDOM.findDOMNode(this);
-    // hljs.highlightBlock(current);
     Prism.highlightElement(current);
   }
 

@@ -330,12 +330,23 @@ a:hover {
   height: 100%;
 }
 
-.code-title {
-  font-style: italic;
+h2.code-title {
+  font-family: 'Whitney SSm A','Whitney SSm B';  
   font-size: 2em;
   background-color: #0e0c0cd6;
   padding: 13px;
   color:#81a2be;
+}
+
+h2 .gh-link {
+  float: right;
+  font-size: .6em;
+  margin-top: 6px;
+  overflow: hidden;
+}
+
+.gh-link a {
+  text-decoration: none;  
 }
 
 .code-container {
@@ -374,11 +385,6 @@ ul.detail-list li {
   margin-bottom: 14px;
   margin-top: -4px;
   color: #036075;
-}
-
-.gh-link {
-  float: right;
-  font-size: .8em;
 }
 
 .code-block {
