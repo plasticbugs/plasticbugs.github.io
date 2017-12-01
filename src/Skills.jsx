@@ -9,39 +9,122 @@ class Skills extends React.Component {
         {
           title: 'JavaScript ES6',
           codeSnippet: function(){
-            return (<div>{`
-const mergeSort = function(array) {
-  if(array.length === 1) {
-    return array;
+            return (<div>{
+`class TicTacToe {
+  constructor() {
+    this.gameBoard = [[null, null, null],[null, null, null],[null, null, null]];
+    this.currentPlayer = 1;
+    this.gameOver = false;
+    this.prompt = require('prompt');
+    console.log(\`Player 1 is Xs, Player 2 is Os\`);
+    this.prompt.start();
   }
-  let middle = Math.floor(array.length / 2);
-  let left = array.slice(0, middle);
-  let right = array.slice(middle);
 
-  return merge(mergeSort(left), mergeSort(right));
-}
+  printGameboard (board) {
+    console.log(\`Tic - Tac - Toe!\`)
+    console.log(\`|$\{board[0][0] || " "}|$\{board[0][1] || " "}|$\{board[0][2] || " "}|\`);
+    console.log(\`-------\`);
+    console.log(\`|$\{board[1][0] || " " }|$\{board[1][1] || " "}|$\{board[1][2] || " "}|\`);
+    console.log(\`-------\`);
+    console.log(\`|$\{board[2][0] || " " }|$\{board[2][1] || " "}|$\{board[2][2] || " "}|\`);
+  }
 
-const merge = function(left, right) {
-  let solution = [];
-  while(left.length && right.length) {
-    if(left[0] > right[0]) {
-      solution.push(right.shift());
-    } else {
-      solution.push(left.shift());
+  checkIfGameBoardFull() {
+    let isFull = true;
+
+    this.gameBoard.forEach(row => {
+      if(row.includes(null)) {
+        isFull = false;
+      }
+    })
+    return isFull;
+  }
+
+  checkWinStateRowsCols (board) {
+    let solutions = [[],[],[],[],[],[]];
+    for(let i = 0; i < 3; i++) {
+      for(let j = 0; j < 3; j++) {
+        solutions[i].push(board[i][j]);
+        solutions[i + 3].push(board[j][i])
+      }
+    }
+    // check diagonals
+    solutions.push([board[0][0], board[1][1], board[2][2]]);
+    solutions.push([board[0][2], board[1][1], board[2][0]]);
+
+    let boardIsFull = this.checkIfGameBoardFull();
+
+    solutions = solutions.map(rowCol => {
+      return rowCol.join('');
+    })
+    for(let i = 0; i < solutions.length; i++) {
+      if(solutions[i] === 'XXX') {
+        this.declareWinner('X');
+      } else if (solutions[i] === 'OOO') {
+        this.declareWinner('O');
+      } else if (boardIsFull) {
+        this.declareWinner(null);
+        break;  
+      }
     }
   }
 
-  while(left.length) {
-    solution.push(left.shift());
+  declareWinner (piece) {
+    if(piece === null) {
+      console.log('This match was a stalemate.');   
+      this.gameOver = true;      
+    } else {
+      console.log(\`$\{piece} wins!!! Congratulations Player $\{this.currentPlayer}!\`);
+      this.gameOver = true;
+    }
+  }
+  
+  gameLoop () {
+    let gamePiece = this.currentPlayer === 1 ? 'X' : 'O';
+
+    console.log(\`Player $\{this.currentPlayer}, what row? (1-3)\`);
+    this.prompt.get([{name: 'row'}], (err, result) => {
+      let targetRow = result.row;
+      console.log(\`you entered row $\{result.row} and your piece is $\{gamePiece}\`);
+      console.log(\`Player $\{this.currentPlayer}, what column? (1-3)\`);
+      this.prompt.get([{name: 'col'}], (err, result) => {
+        if(this.gameBoard[targetRow - 1][result.col - 1]) {
+          console.log(\`Sorry, you can't place a mark there!\`);
+          this.printGameboard(this.gameBoard);          
+          this.gameLoop();
+        } else {
+          this.gameBoard[targetRow - 1][result.col - 1] = gamePiece;
+          console.log(\`you entered column $\{result.col} and your piece is $\{gamePiece}\`);
+          this.printGameboard(this.gameBoard);
+          this.checkWinStateRowsCols(this.gameBoard);
+          if(this.gameOver) {
+            return;
+          } else {
+            if( this.currentPlayer === 1) {
+              this.currentPlayer = 2;
+              this.gameLoop();
+            } else {
+              this.currentPlayer = 1
+              this.gameLoop();
+            }
+          }
+        }
+      });
+    })
   }
 
-  while(right.length) {
-    solution.push(right.shift());
+  startGame() {
+    this.printGameboard(this.gameBoard);    
+    this.gameLoop(this.currentPlayer);
   }
-  return solution;
-          }`}</div>)},
+}
+
+let game = new TicTacToe();
+game.startGame();`
+              }</div>)},
           showModal: false,
-          codeLang: 'javascript'
+          codeLang: 'javascript',
+          ghLink: 'https://github.com/plasticbugs/tictactoecli/blob/master/tictactoe.js'
         },
         {
           title: 'React',
@@ -718,12 +801,90 @@ describe('The search API', function() {
           codeLang: 'javascript'
         },
         {
-          title: 'Ruby on Rails',
+          title: 'Knex',
           codeSnippet: function(){
-            return (<div>{`
-            `}</div>)},
+            return (<div>{
+`exports.up = function(knex, Promise) {
+  return Promise.all([
+    knex.schema.createTableIfNotExists('shops', function (table) {
+      table.increments('id').unsigned().primary();
+      table.string('name', 100).nullable().unique();
+      table.string('url', 1024).nullable();
+      table.string('address1', 100).nullable();
+      table.string('address2', 100).nullable();
+      table.string('city', 100).nullable();
+      table.string('state', 20).nullable();
+      table.string('zip', 10).nullable();
+      table.string('phone', 100).nullable();
+      table.string('rating', 10).nullable();
+      table.string('latitude', 100).nullable();
+      table.string('longitude', 100).nullable();
+      table.string('shop_image', 255).nullable();
+      table.timestamps(true, true);
+    }),
+    knex.schema.createTableIfNotExists('images', function(table) {
+      table.increments('id').unsigned().primary();
+      table.string('url', 512).notNullable();
+      table.integer('profile_id').references('profiles.id').onDelete('CASCADE');
+      table.timestamp('created_at').defaultTo(knex.fn.now());
+      table.integer('favoriteCount').defaultTo(0);
+      table.string('image_type', 100);
+      table.index('image_type');
+    }),
+    knex.schema.createTableIfNotExists('tags', function(table) {
+      table.increments('id').unsigned().primary();
+      table.string('name', 50).nullable().unique();
+    }),
+    knex.schema.createTableIfNotExists('images_tags', function(table) {
+      table.integer('image_id').references('images.id').onDelete('CASCADE');
+      table.integer('tag_id').references('tags.id');
+    }),
+    knex.schema.createTableIfNotExists('favorites', function(table) {
+      table.increments('id').unsigned().primary();
+      table.integer('image_id').references('images.id').onDelete('CASCADE');
+      table.integer('profile_id').references('profiles.id').onDelete('CASCADE');
+    }),
+    knex.schema.createTableIfNotExists('ratings', function(table) {
+      table.increments('id').unsigned().primary();
+      table.integer('shop_id').references('shops.id').onDelete('CASCADE');
+      table.integer('profile_id').references('profiles.id').onDelete('CASCADE');
+      table.integer('value').unsigned();
+    }),
+    // this adds the necessary shop_id column to the profile table
+    knex.schema.table('profiles', function(table) {
+      table.integer('shop_id').nullable();
+      table.foreign('shop_id').references('shops.id');
+    })
+  ]);
+};
+
+exports.down = function(knex, Promise) {
+  return knex.schema.table('profiles', function(table) {
+    table.dropColumn('shop_id');
+  })
+  .then(() => {
+    return knex.schema.dropTableIfExists('ratings');
+  })
+  .then(() => {
+    return knex.schema.dropTableIfExists('favorites');
+  })
+  .then(() => {
+    return knex.schema.dropTableIfExists('images_tags');
+  })
+  .then(() => {
+    return knex.schema.dropTableIfExists('tags');
+  })
+  .then(() => {
+    return knex.schema.dropTableIfExists('images');
+  })
+  .then(() => {
+    return knex.schema.dropTableIfExists('shops');
+  });
+};`
+            }</div>)},
           showModal: false,
-          codeLang: 'ruby'
+          codeLang: 'javascript',
+          ghLink: 'https://github.com/plasticbugs/ynck.io/blob/master/db/migrations/20170525170907_starter_tables.js'
         },
         {
           title: 'HTML5',

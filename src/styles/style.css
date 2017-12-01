@@ -161,6 +161,10 @@ div.heading {
   text-decoration: none
 }
 
+.profile-links a {
+  display: inline-block;
+}
+
 .profile-links i {
   transition: all .2s ease;  
   font-size: 1.3em;
@@ -332,16 +336,17 @@ a:hover {
 
 h2.code-title {
   font-family: 'Whitney SSm A','Whitney SSm B';  
-  font-size: 2em;
+  font-size: 1.5em;
   background-color: #0e0c0cd6;
   padding: 13px;
   color:#81a2be;
+  overflow: hidden;
 }
 
 h2 .gh-link {
   float: right;
-  font-size: .6em;
-  margin-top: 6px;
+  font-size: .8em;
+  margin-top: 0;
   overflow: hidden;
 }
 
@@ -396,22 +401,28 @@ ul.detail-list li {
   cursor: pointer;
 }
 
+p.profile-links {
+  margin-top: 70px;
+}
+
 @media only screen 
 and (min-device-width: 320px) 
 and (max-device-width: 568px)
 and (-webkit-min-device-pixel-ratio: 2)
 and (orientation: portrait) {
-  p.profile-links {
+  /* p.profile-links {
     width: 100%;
     margin: auto;
     margin-top: 50px;
+    display: block;
   }
 
   .profile-links a {
     display: inline-block;
+    padding-left: 0px;
     padding-right: 0px;
     line-height: 3em;    
-  }
+  } */
 
   .portfolio li {
     width: 250px;
@@ -451,5 +462,58 @@ and (orientation: portrait) {
 @media screen and (orientation:landscape) {
   .modal-video-body {
     width: 80%;
+  }
+}
+
+.footer {
+  padding: 50px;
+  text-align: center;
+  background-color: #e4f1f9;
+  color: #2e363b;
+  font-size: .8em;
+}
+
+.footer p {
+  line-height: 1.4em;
+  margin-bottom: 1.5em;
+}
+
+.footer .whitney {
+  font-family: 'Whitney SSm A','Whitney SSm B';
+  font-weight: 600;  
+}
+
+.footer .operator {
+  font-family: "Operator Mono SSm A", "Operator Mono SSm B";  
+  font-style: italic;  
+}
+
+.react-logo {
+  -webkit-animation:spin 4s linear infinite;
+  -moz-animation:spin 4s linear infinite;
+  animation:spin 4s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+@media screen and (max-width: 568px) {
+  p.profile-links {
+    width: 100%;
+    margin: auto;
+    margin-top: 50px;
+    text-align: left;
+    display: block;
+  }
+
+  .header a:not(:first-child) {
+    padding-left: 0px;
+  }
+
+  .profile-links a {
+    display: block;
+    padding-left: 0px;
+    padding-right: 0px;
+    line-height: 3em;    
   }
 }
