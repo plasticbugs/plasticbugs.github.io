@@ -23,6 +23,9 @@ class Footer extends React.Component {
         <p>
           The typefaces used on this website are <span className="operator">Operator Mono</span> and <span className="whitney">Whitney</span>. Both are from <a href="http://typography.com/">Hoefler & Co.</a>.
         </p>
+        <p>
+          This site is responsive! Check out the source on <a href="https://github.com/plasticbugs/plasticbugs.github.io">GitHub</a>.
+        </p>
       </div>
     )
   }
