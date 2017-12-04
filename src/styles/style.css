@@ -37,6 +37,7 @@ body {
   padding: 100px 100px 80px 100px;
   background: linear-gradient(111deg,#00BCD4,#04a9f4);
   box-shadow: inset 0px -91px 12px -90px #15151344;
+  color: #fefefe;
 }
 
 .heart {
