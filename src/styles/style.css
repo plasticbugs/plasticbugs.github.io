@@ -67,7 +67,8 @@ body {
   font-family: 'Whitney SSm A','Whitney SSm B';
   font-style: normal;
   font-weight: 400;
-  line-height: 1.2em
+  line-height: 1.2em;
+  box-shadow: inset 0px 96px 12px -90px #00000059;
 }
 
 .portfolio li {
@@ -87,39 +88,22 @@ div.heading {
 }
 
 .title {
+  padding: 6px 5px 6px 10px;
   font-size: .9em;
-  margin-bottom: 10px;
   line-height: 1.3em;
-  padding-bottom: 5px;
-  padding-left: 10px;
   overflow: hidden;
+  border-radius: 3px;
 }
 
-/* 
-.skills li {
-  line-height: 1.3em
-} */
-
-/* .skills section {
-  box-sizing: border-box;
-  margin-bottom: 10px;
-  margin-top: 20px
-} */
-
-/* .skills {
-  width: 90%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin: 0 auto
-} */
 
 .info-box .title {
-  padding: 6px 5px 6px 10px;
   margin-bottom: 0;
   background-color: #000000ba;
   color: white;
+}
+
+.info-box {
+  padding: 5px;
 }
 
 .image-box, .info-box {
@@ -315,6 +299,8 @@ a:hover {
   background-color: #272823;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
+  padding: 10px;
+  border-radius: 4px;
 }
 
 .code-block code[class*="language-"], pre[class*="language-"] {
@@ -340,7 +326,8 @@ h2.code-title {
   font-family: 'Whitney SSm A','Whitney SSm B';  
   font-size: 1.5em;
   background-color: #0e0c0cd6;
-  padding: 13px;
+  padding: 8px 13px;
+  border-radius: 4px;
   color:#81a2be;
   overflow: hidden;
 }
