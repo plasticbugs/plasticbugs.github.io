@@ -7,7 +7,6 @@ class Modal extends React.Component {
   }
 
   render() {
-    console.log(this.props.ghLink)
     return <div className="modal">
       <div className="code-container">
       <div className="code-block" onClick={(e)=>{e.stopPropagation()}}>

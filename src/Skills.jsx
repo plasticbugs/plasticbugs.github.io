@@ -907,7 +907,6 @@ exports.down = function(knex, Promise) {
   }
 
   toggleModal(index) {
-    console.log(index);
     let skillsCopy = this.state.skills.map(skill=> {return Object.assign({}, skill )});
     skillsCopy[index].showModal = !skillsCopy[index].showModal
     this.setState({skills: skillsCopy});
