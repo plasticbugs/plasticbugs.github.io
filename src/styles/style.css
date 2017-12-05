@@ -378,7 +378,7 @@ ul.detail-list li {
 .skills p {
   font-size: .7em;
   margin-bottom: 14px;
-  margin-top: -4px;
+  margin-top: 0px;
   color: #036075;
 }
 
