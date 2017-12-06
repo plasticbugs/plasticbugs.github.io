@@ -56,6 +56,15 @@ body {
   line-height: 1.5em
 }
 
+.about {
+  font-weight: 600;
+  font-size: 1.5em;
+}
+
+.about-2 {
+  color: #ffffffaa;
+}
+
 .highlight {
   color: #568fffcc
 }

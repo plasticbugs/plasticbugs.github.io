@@ -8,11 +8,11 @@ class Header extends React.Component {
   render() {
     return (
       <div className='header'>
-        <img className='headshot' src='./images/headshot.png' />
-        <p>
+        <img className="headshot" src="./images/headshot.png" />
+        <p className="about">
           Hi! I'm Scott Moschella, a software engineer based in San&nbsp;Francisco,&nbsp;CA.
         </p>
-        <p>
+        <p className="about-2">
           I make things with JavaScript, React/Redux, Node.js, and other stuff.
         </p>
         <p className="profile-links">
