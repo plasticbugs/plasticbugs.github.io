@@ -886,14 +886,14 @@ exports.down = function(knex, Promise) {
           codeLang: 'javascript',
           ghLink: 'https://github.com/plasticbugs/ynck.io/blob/master/db/migrations/20170525170907_starter_tables.js'
         },
-        {
-          title: 'HTML5',
-          codeSnippet: function(){
-            return (<div>{`
-            `}</div>)},
-          showModal: false,
-          codeLang: 'markup'
-        },
+        // {
+        //   title: 'HTML5',
+        //   codeSnippet: function(){
+        //     return (<div>{`
+        //     `}</div>)},
+        //   showModal: false,
+        //   codeLang: 'markup'
+        // },
         {
           title: 'Sass',
           codeSnippet: function(){
