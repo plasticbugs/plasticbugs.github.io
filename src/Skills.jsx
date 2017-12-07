@@ -895,12 +895,476 @@ exports.down = function(knex, Promise) {
           codeLang: 'markup'
         },
         {
-          title: 'CSS3',
+          title: 'Sass',
           codeSnippet: function(){
             return (<div>{`
+@import '../styles/reset.css';
+@import '../../node_modules/react-modal-video/css/modal-video.min.css';
+@import '../styles/prism.css';
+
+$darkGray: #2e363b;
+$white: #fefefe;
+$transparentWhite: transparentize($white, .3);
+$orange: #FF5722;
+$red: #ff2020;
+
+@media screen and (min-width: 1140px) {
+  .portfolio .project-list > li {
+    display: inline-block;
+  }
+  .project-list > li:nth-child(even) {
+    margin-left: 30px;
+  }
+}
+
+@media screen and (min-width: 1420px) {
+  .project-list {
+    width: 1400px;
+    margin: auto;
+  }
+}
+
+body {
+  font-family: 'Whitney SSm A','Whitney SSm B';
+  font-style: normal;
+  font-weight: 300;
+  color: $transparentWhite;
+  background-color: $darkGray;
+}
+
+a {
+  color: #2695fd
+}
+
+a:hover {
+  transition: all .3s ease;
+  color: #00bcd4;
+}
+
+.headshot {
+  border-radius: 50px;
+  width: 100px;
+  filter: grayscale(100%);
+  margin-bottom: 20px
+}
+
+.header {
+  text-align: center;
+  margin: auto;
+  padding: 100px 100px 80px 100px;
+  background: linear-gradient(111deg,#00BCD4,#04a9f4);
+  box-shadow: inset 0px -91px 12px -90px transparentize(#151513, .4);
+  color: $white;
+  p {
+      margin-top: 20px;
+      line-height: 1.5em
+  }
+  a:not(:first-child) {
+    padding-left: 20px
+  }
+  a:last-child {
+    padding-right: 0px;
+  }
+}
+
+.about {
+  font-weight: 600;
+  font-size: 1.5em;
+}
+
+.about-2 {
+  color: $transparentWhite;
+}
+
+.highlight {
+  color: transparentize(#568fff, .3);
+}
+
+.whitney300 {
+  font-family: 'Whitney SSm A','Whitney SSm B';
+  font-style: normal;
+  font-weight: 400;
+}
+
+.whitney400smallCaps {
+  font-family: 'Whitney SSm SmallCaps A','Whitney SSm SmallCaps B';
+  font-style: normal;
+  font-weight: 400;
+}
+
+.portfolio {
+  @extend .whitney300;
+  color: $white;
+  padding: 40px 20px;
+  text-align: center;
+  line-height: 1.2em;
+  box-shadow: inset 0px 96px 12px -90px transparentize(#000000, .7);
+  li {
+    width: 500px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    vertical-align: top;
+  }
+}
+
+div.heading {
+  @extend .whitney300;
+  font-size: 1.5em;
+  margin-bottom: 40px;
+  padding-bottom: 0
+}
+
+.title {
+  padding: 6px 0 6px 10px;
+  font-size: .9em;
+  line-height: 1.3em;
+  border-radius: 3px;
+}
+
+.info-box .title {
+  margin-bottom: 0;
+  background-color: transparentize($color: #000000, $amount: .3);
+  color: $white;
+  overflow: hidden;
+}
+
+.info-box {
+  padding: 5px;
+  background-color: #dcdcdc;
+  color: $darkGray;
+  i {
+    padding-right: 3px;
+    vertical-align: middle
+  }
+}
+
+.image-box {
+  @extend .info-box;
+  line-height: 0px;  
+  padding: 0;
+  li {
+    margin-left: 0;
+  }
+}
+
+.image-box img {
+  width: 100%;
+}
+
+.description, .image-box, .info-box {
+  margin: 0 auto;
+  text-align: left;
+}
+
+.description {
+  font-size: .8em;
+  padding: 8px 10px;
+  line-height: 1.5em;
+}
+
+.info-box a, .profile-links a {
+  color: #8de9ff;
+  padding-right: 17px;
+  font-size: .8em;
+  text-decoration: none
+}
+
+.profile-links {
+  a {
+    display: inline-block;
+    color: $white;
+  }
+  i {
+    transition: all .2s ease;  
+    font-size: 1.3em;
+    color: $orange;
+    padding: 4px 5px;
+    border-radius: 3px;
+    margin-right: 3px;
+    background-color: $white;
+    box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+  }
+  a:hover > i {
+    transition: all .3s ease;  
+    color: $white;
+    background-color: $orange;
+  }
+}
+
+.info-box a:hover,.profile-links a:hover {
+  transition: all .3s ease;
+  color: #FF9800;
+}
+
+.fa {
+  white-space: nowrap;
+}
+
+.external-links {
+  float: right;
+}
+
+.youtube-link {
+  display: inline;
+  a {
+    transition: all .2s ease;  
+    color: $red;
+  }
+}
+
+.skills-container {
+  width: 100%;
+  background-color: #e4f1f9;  
+}
+
+.skills {
+  color: $darkGray;
+  text-align: center;
+  width: 60%;
+  margin: 0px auto;
+  padding: 50px 0px;
+  p {
+    font-size: .7em;
+    margin-bottom: 14px;
+    margin-top: 0px;
+    color: #036075;
+  }
+  ul {
+    li {
+      display: inline-block;
+      padding: 1em;
+      font-size: .8em;
+    }
+  }
+}
+
+.skills div.heading {
+  font-family: 'Whitney SSm A','Whitney SSm B';
+  margin-bottom: 10px;
+}
+
+.bullets {
+  transition: all .2s ease;
+  opacity: 0;
+  float: right;
+  z-index: 1;
+  width: 500px;
+  position: absolute;
+  background-color: transparentize(#133542, .2);
+  padding-top: 30px;
+  height: 274px;
+  font-weight: 300;
+  line-height: 1.2em;
+
+}
+
+.bullets li {
+  margin-bottom: 18px;
+  color: $white;
+  padding: 0 20px;
+  width: 460px;
+  font-size: .8em;
+}
+
+.bullets:hover {
+  opacity: 1;
+  transition: all .3s ease;
+}
+
+.code-block {
+  text-align: left;
+  font-family: "Operator Mono SSm A", "Operator Mono SSm B";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.6em;
+  font-size: .8em;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: 75%;
+  height: 75%;
+  transform: translate(-50%, -50%);
+  overflow: auto;
+  background-color: #272823;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: initial;  
+}
+
+.code-block code[class*="language-"], pre[class*="language-"] {
+  font-family: "Operator Mono SSm A", "Operator Mono SSm B";  
+}
+
+.code-block pre[class*="language-"] .keyword {
+  font-style: italic;
+}
+
+.modal {
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0px;
+  background-color: transparentize(#000000, .7);
+  width: 100%;
+  height: 100%;
+}
+
+h2.code-title {
+  font-family: 'Whitney SSm A','Whitney SSm B';  
+  font-size: 1.5em;
+  background-color: transparentize(#0e0c0c, .2);
+  padding: 8px 13px;
+  border-radius: 4px;
+  color:#81a2be;
+  overflow: hidden;
+}
+
+h2 .gh-link {
+  float: right;
+  font-size: .8em;
+  margin-top: 0;
+  overflow: hidden;
+}
+
+.gh-link a {
+  text-decoration: none;  
+}
+
+.details {
+  display: none;
+}
+
+ul.detail-list {
+  padding: 0 10px 5px 10px;
+  font-size: .7em;
+  color: #036075;
+}
+
+a.details {
+  color: #0099bd;
+}
+
+ul.detail-list li {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+
+.skills li:hover {
+  color: #FF5722;
+  cursor: pointer;
+}
+
+p.profile-links {
+  margin-top: 70px;
+}
+
+.footer {
+  padding: 50px;
+  text-align: center;
+  background-color: #e4f1f9;
+  color: #2e363b;
+  font-size: .8em;
+  p {
+    line-height: 1.4em;
+    margin-bottom: 1.5em;
+  }
+}
+
+.footer .whitney {
+  font-family: 'Whitney SSm A','Whitney SSm B';
+  font-weight: 600;  
+}
+
+.footer .operator {
+  font-family: "Operator Mono SSm A", "Operator Mono SSm B";  
+  font-style: italic;  
+}
+
+.react-logo {
+  -webkit-animation:spin 4s linear infinite;
+  -moz-animation:spin 4s linear infinite;
+  animation:spin 4s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+@media only screen 
+and (min-device-width: 320px) 
+and (max-device-width: 568px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: portrait) {
+
+  .portfolio li {
+    width: 250px;
+  }
+
+  .bullets {
+    display: none;
+  }
+
+  .details {
+    display: block;
+  }
+
+}
+
+@media screen and (orientation:portrait) {
+  .bullets {
+    display: none;
+  }
+  .info-box a {
+    display: block;
+  }
+
+  .details {
+    display: block;
+  }
+
+  .external-links {
+    text-align: right;
+  }
+
+  .portfolio li {
+    width: 100%;
+  }
+}
+
+@media screen and (orientation:landscape) {
+  .modal-video-body {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  p.profile-links {
+    width: 10em;
+    margin: auto;
+    margin-top: 50px;
+    text-align: left;
+    display: block;
+  }
+
+  .header a:not(:first-child) {
+    padding-left: 0px;
+  }
+
+  .profile-links a {
+    display: block;
+    padding-left: 0px;
+    padding-right: 0px;
+    line-height: 3em;    
+  }
+}
+            
             `}</div>)},
           showModal: false,
-          codeLang: 'css'
+          codeLang: 'sass'
         }
       ]
     }

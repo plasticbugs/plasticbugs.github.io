@@ -1,4 +1,12 @@
+@import '../styles/reset.css';
 @import '../../node_modules/react-modal-video/css/modal-video.min.css';
+@import '../styles/prism.css';
+
+$darkGray: #2e363b;
+$white: #fefefe;
+$transparentWhite: transparentize($white, .3);
+$orange: #FF5722;
+$red: #ff2020;
 
 @media screen and (min-width: 1140px) {
   .portfolio .project-list > li {
@@ -20,8 +28,17 @@ body {
   font-family: 'Whitney SSm A','Whitney SSm B';
   font-style: normal;
   font-weight: 300;
-  color: #fefefec4;
-  background-color: #2e363b
+  color: $transparentWhite;
+  background-color: $darkGray;
+}
+
+a {
+  color: #2695fd
+}
+
+a:hover {
+  transition: all .3s ease;
+  color: #00bcd4;
 }
 
 .headshot {
@@ -36,24 +53,18 @@ body {
   margin: auto;
   padding: 100px 100px 80px 100px;
   background: linear-gradient(111deg,#00BCD4,#04a9f4);
-  box-shadow: inset 0px -91px 12px -90px #15151344;
-  color: #fefefe;
-}
-
-.heart {
-  color: #ff2020;
-  display: inline-block;
-  -webkit-transform: scaleX(1.2);
-  -moz-transform: scaleX(1.2);
-  -ms-transform: scaleX(1.2);
-  -o-transform: scaleX(1.2);
-  transform: scaleX(1.2);
-  padding: 0 10px
-}
-
-.header p {
-  margin-top: 20px;
-  line-height: 1.5em
+  box-shadow: inset 0px -91px 12px -90px transparentize(#151513, .4);
+  color: $white;
+  p {
+      margin-top: 20px;
+      line-height: 1.5em
+  }
+  a:not(:first-child) {
+    padding-left: 20px
+  }
+  a:last-child {
+    padding-right: 0px;
+  }
 }
 
 .about {
@@ -62,37 +73,44 @@ body {
 }
 
 .about-2 {
-  color: #ffffffaa;
+  color: $transparentWhite;
 }
 
 .highlight {
-  color: #568fffcc
+  color: transparentize(#568fff, .3);
 }
 
-.portfolio {
-  color: #f5f5f5;
-  padding: 40px 20px;
-  text-align: center;
+.whitney300 {
   font-family: 'Whitney SSm A','Whitney SSm B';
   font-style: normal;
   font-weight: 400;
-  line-height: 1.2em;
-  box-shadow: inset 0px 96px 12px -90px #00000059;
 }
 
-.portfolio li {
-  width: 500px;
-  margin: 0 auto;
-  margin-bottom: 50px;
-  vertical-align: top;
-}
-
-div.heading {
-  font-size: 1.5em;
-  margin-bottom: 40px;
+.whitney400smallCaps {
   font-family: 'Whitney SSm SmallCaps A','Whitney SSm SmallCaps B';
   font-style: normal;
   font-weight: 400;
+}
+
+.portfolio {
+  @extend .whitney300;
+  color: $white;
+  padding: 40px 20px;
+  text-align: center;
+  line-height: 1.2em;
+  box-shadow: inset 0px 96px 12px -90px transparentize(#000000, .7);
+  li {
+    width: 500px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    vertical-align: top;
+  }
+}
+
+div.heading {
+  @extend .whitney300;
+  font-size: 1.5em;
+  margin-bottom: 40px;
   padding-bottom: 0
 }
 
@@ -100,28 +118,37 @@ div.heading {
   padding: 6px 0 6px 10px;
   font-size: .9em;
   line-height: 1.3em;
-  overflow: hidden;
   border-radius: 3px;
 }
 
-
 .info-box .title {
   margin-bottom: 0;
-  background-color: #000000ba;
-  color: white;
+  background-color: transparentize($color: #000000, $amount: .3);
+  color: $white;
+  overflow: hidden;
 }
 
 .info-box {
   padding: 5px;
-}
-
-.image-box, .info-box {
   background-color: #dcdcdc;
-  color: #2e363b
+  color: $darkGray;
+  i {
+    padding-right: 3px;
+    vertical-align: middle
+  }
 }
 
-.image-box li {
-  margin-left: 0;
+.image-box {
+  @extend .info-box;
+  line-height: 0px;  
+  padding: 0;
+  li {
+    margin-left: 0;
+  }
+}
+
+.image-box img {
+  width: 100%;
 }
 
 .description, .image-box, .info-box {
@@ -135,46 +162,33 @@ div.heading {
   line-height: 1.5em;
 }
 
-.info-box i {
-  padding-right: 3px;
-  vertical-align: middle
-}
-
-.header a:not(:first-child) {
-  padding-left: 20px
-}
-
-.header a:last-child {
-  padding-right: 0px;
-}
-
-.info-box a,.profile-links a {
-  color: #8de9ff;;
+.info-box a, .profile-links a {
+  color: #8de9ff;
   padding-right: 17px;
   font-size: .8em;
   text-decoration: none
 }
 
-.profile-links a {
-  display: inline-block;
-  color: #fefefe;
-}
-
-.profile-links i {
-  transition: all .2s ease;  
-  font-size: 1.3em;
-  color: #FF5722;
-  padding: 4px 5px;
-  border-radius: 3px;
-  background-color: #ffffff;
-  margin-right: 3px;
-  box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
-}
-
-.profile-links a:hover > i {
-  transition: all .3s ease;  
-  color: #ffffff;
-  background-color: #FF5722;
+.profile-links {
+  a {
+    display: inline-block;
+    color: $white;
+  }
+  i {
+    transition: all .2s ease;  
+    font-size: 1.3em;
+    color: $orange;
+    padding: 4px 5px;
+    border-radius: 3px;
+    margin-right: 3px;
+    background-color: $white;
+    box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+  }
+  a:hover > i {
+    transition: all .3s ease;  
+    color: $white;
+    background-color: $orange;
+  }
 }
 
 .info-box a:hover,.profile-links a:hover {
@@ -186,17 +200,16 @@ div.heading {
   white-space: nowrap;
 }
 
-.youtube-link a {
-  transition: all .2s ease;  
-  color: #ff2020;
-}
-
 .external-links {
   float: right;
 }
 
 .youtube-link {
-  display: inline
+  display: inline;
+  a {
+    transition: all .2s ease;  
+    color: $red;
+  }
 }
 
 .skills-container {
@@ -205,63 +218,29 @@ div.heading {
 }
 
 .skills {
-  color: #2e363b;
+  color: $darkGray;
   text-align: center;
   width: 60%;
   margin: 0px auto;
   padding: 50px 0px;
+  p {
+    font-size: .7em;
+    margin-bottom: 14px;
+    margin-top: 0px;
+    color: #036075;
+  }
+  ul {
+    li {
+      display: inline-block;
+      padding: 1em;
+      font-size: .8em;
+    }
+  }
 }
 
 .skills div.heading {
   font-family: 'Whitney SSm A','Whitney SSm B';
   margin-bottom: 10px;
-}
-
-.skills li {
-  display: inline-block;
-  padding: 1em;
-  font-size: .8em;
-}
-
-a {
-  color: #2695fd
-}
-
-a:hover {
-  transition: all .3s ease;
-  color: #00bcd4;
-}
-
-.arrow_box {
-  position: absolute;
-  margin-top: -50px;
-  background: #292929;
-  border: 1px solid #356486;
-  padding: 10px;
-  border-radius: 2px;
-}
-.arrow_box:after, .arrow_box:before {
-	top: 100%;
-	left: 50%;
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
-}
-
-.arrow_box:after {
-	border-color: rgba(41, 41, 41, 0);
-	border-top-color: #292929;
-	border-width: 8px;
-	margin-left: -8px;
-}
-.arrow_box:before {
-	border-color: rgba(0, 0, 0, 0);
-	border-top-color: #356486;
-	border-width: 9px;
-	margin-left: -9px;
 }
 
 .bullets {
@@ -271,24 +250,25 @@ a:hover {
   z-index: 1;
   width: 500px;
   position: absolute;
-  background-color: #133542e0;
+  background-color: transparentize(#133542, .2);
   padding-top: 30px;
   height: 274px;
   font-weight: 300;
   line-height: 1.2em;
+
+}
+
+.bullets li {
+  margin-bottom: 18px;
+  color: $white;
+  padding: 0 20px;
+  width: 460px;
+  font-size: .8em;
 }
 
 .bullets:hover {
   opacity: 1;
   transition: all .3s ease;
-}
-
-.bullets li {
-  margin-bottom: 18px;
-  color: #fffffff0;
-  padding: 0 20px;
-  width: 460px;
-  font-size: .8em;
 }
 
 .code-block {
@@ -311,6 +291,7 @@ a:hover {
   -webkit-overflow-scrolling: touch;
   padding: 10px;
   border-radius: 4px;
+  cursor: initial;  
 }
 
 .code-block code[class*="language-"], pre[class*="language-"] {
@@ -327,7 +308,7 @@ a:hover {
   z-index: 2;
   top: 0;
   left: 0px;
-  background-color: #000000bd;
+  background-color: transparentize(#000000, .7);
   width: 100%;
   height: 100%;
 }
@@ -335,7 +316,7 @@ a:hover {
 h2.code-title {
   font-family: 'Whitney SSm A','Whitney SSm B';  
   font-size: 1.5em;
-  background-color: #0e0c0cd6;
+  background-color: transparentize(#0e0c0c, .2);
   padding: 8px 13px;
   border-radius: 4px;
   color:#81a2be;
@@ -351,18 +332,6 @@ h2 .gh-link {
 
 .gh-link a {
   text-decoration: none;  
-}
-
-.code-container {
-  background-color: red;
-}
-
-.image-box img {
-  width: 100%;
-}
-
-.image-box {
-  line-height: 0px;
 }
 
 .details {
@@ -384,16 +353,6 @@ ul.detail-list li {
   margin-bottom: 1em;
 }
 
-.skills p {
-  font-size: .7em;
-  margin-bottom: 14px;
-  margin-top: 0px;
-  color: #036075;
-}
-
-.code-block {
-  cursor: initial;
-}
 
 .skills li:hover {
   color: #FF5722;
@@ -404,24 +363,42 @@ p.profile-links {
   margin-top: 70px;
 }
 
+.footer {
+  padding: 50px;
+  text-align: center;
+  background-color: #e4f1f9;
+  color: #2e363b;
+  font-size: .8em;
+  p {
+    line-height: 1.4em;
+    margin-bottom: 1.5em;
+  }
+}
+
+.footer .whitney {
+  font-family: 'Whitney SSm A','Whitney SSm B';
+  font-weight: 600;  
+}
+
+.footer .operator {
+  font-family: "Operator Mono SSm A", "Operator Mono SSm B";  
+  font-style: italic;  
+}
+
+.react-logo {
+  -webkit-animation:spin 4s linear infinite;
+  -moz-animation:spin 4s linear infinite;
+  animation:spin 4s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
 @media only screen 
 and (min-device-width: 320px) 
 and (max-device-width: 568px)
 and (-webkit-min-device-pixel-ratio: 2)
 and (orientation: portrait) {
-  /* p.profile-links {
-    width: 100%;
-    margin: auto;
-    margin-top: 50px;
-    display: block;
-  }
-
-  .profile-links a {
-    display: inline-block;
-    padding-left: 0px;
-    padding-right: 0px;
-    line-height: 3em;    
-  } */
 
   .portfolio li {
     width: 250px;
@@ -463,38 +440,6 @@ and (orientation: portrait) {
     width: 80%;
   }
 }
-
-.footer {
-  padding: 50px;
-  text-align: center;
-  background-color: #e4f1f9;
-  color: #2e363b;
-  font-size: .8em;
-}
-
-.footer p {
-  line-height: 1.4em;
-  margin-bottom: 1.5em;
-}
-
-.footer .whitney {
-  font-family: 'Whitney SSm A','Whitney SSm B';
-  font-weight: 600;  
-}
-
-.footer .operator {
-  font-family: "Operator Mono SSm A", "Operator Mono SSm B";  
-  font-style: italic;  
-}
-
-.react-logo {
-  -webkit-animation:spin 4s linear infinite;
-  -moz-animation:spin 4s linear infinite;
-  animation:spin 4s linear infinite;
-}
-@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
-@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
-@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
 @media screen and (max-width: 568px) {
   p.profile-links {
