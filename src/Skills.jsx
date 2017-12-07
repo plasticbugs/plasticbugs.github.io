@@ -897,8 +897,8 @@ exports.down = function(knex, Promise) {
         {
           title: 'Sass',
           codeSnippet: function(){
-            return (<div>{`
-@import '../styles/reset.css';
+            return (<div>{
+`@import '../styles/reset.css';
 @import '../../node_modules/react-modal-video/css/modal-video.min.css';
 @import '../styles/prism.css';
 
@@ -1354,8 +1354,7 @@ and (orientation: portrait) {
     padding-right: 0px;
     line-height: 3em;    
   }
-}                 
-            `}</div>)},
+}`}</div>)},
           showModal: false,
           codeLang: 'sass',
           ghLink: 'https://github.com/plasticbugs/plasticbugs.github.io/blob/master/src/styles/style.scss'
