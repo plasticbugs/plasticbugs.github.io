@@ -1364,7 +1364,8 @@ and (orientation: portrait) {
             
             `}</div>)},
           showModal: false,
-          codeLang: 'sass'
+          codeLang: 'sass',
+          ghLink: 'https://github.com/plasticbugs/plasticbugs.github.io/blob/master/src/styles/style.scss'
         }
       ]
     }
