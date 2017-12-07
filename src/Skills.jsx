@@ -986,12 +986,6 @@ a:hover {
   font-weight: 400;
 }
 
-.whitney400smallCaps {
-  font-family: 'Whitney SSm SmallCaps A','Whitney SSm SmallCaps B';
-  font-style: normal;
-  font-weight: 400;
-}
-
 .portfolio {
   @extend .whitney300;
   color: $white;
@@ -1360,8 +1354,7 @@ and (orientation: portrait) {
     padding-right: 0px;
     line-height: 3em;    
   }
-}
-            
+}                 
             `}</div>)},
           showModal: false,
           codeLang: 'sass',
