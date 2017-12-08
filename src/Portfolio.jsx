@@ -88,7 +88,6 @@ class Portfolio extends React.Component {
   }
 
   renderYouTubeModal(ytlink) {
-    console.log(ytlink)
     return (
       <ModalVideoWrapper videoId={ytlink} />
     )
