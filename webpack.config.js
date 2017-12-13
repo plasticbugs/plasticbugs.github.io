@@ -1,5 +1,6 @@
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
 
 const extractSass = new ExtractTextPlugin(
   "./css/style.min.css"
@@ -16,7 +17,10 @@ module.exports = {
       test: /\.js($|\?)/i,
       sourceMap: true
     }),
-    extractSass
+    extractSass,
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    })
     // new ExtractTextPlugin("./css/style.min.css")
   ],
   output: {
