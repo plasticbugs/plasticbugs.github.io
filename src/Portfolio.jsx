@@ -1,8 +1,54 @@
 import React from 'react';
 import ModalVideoWrapper from './ModalVideoWrapper.jsx';
 
-
 class Portfolio extends React.Component {
+  static renderYouTubeModal(ytlink) {
+    return <ModalVideoWrapper videoId={ytlink} />;
+  }
+
+  static uuidv4() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function regex(c) {
+      const r = Math.random() * 16 | 0;
+      const v = c === 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
+
+  static renderBullets(project) {
+    if (project.bullets) {
+      return (
+        <ul className="bullets">
+          {project.bullets.map(bullet => <li key={Portfolio.uuidv4()}>{bullet}</li>)}
+        </ul>
+      );
+    }
+    return null;
+  }
+
+  static renderDetails(bullets) {
+    if (bullets) {
+      return (
+        <ul className="detail-list">
+          {
+            bullets.map(bullet => <li key={bullet}>{bullet}</li>)
+          }
+        </ul>
+      );
+    }
+    return null;
+  }
+
+  static renderLink(link, icon) {
+    const classname = `fa fa-${icon} fa-2`;
+    const linktext = icon === 'github' ? 'repo' : 'site';
+
+    return (
+      <a href={link}>
+        <i className={classname} aria-hidden="true" />{linktext}
+      </a>
+    );
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -19,7 +65,7 @@ class Portfolio extends React.Component {
           ghlink: 'https://github.com/plasticbugs/ynck.io',
           videoDemo: 'Ci2ZJvk3YzE',
           weblink: 'http://ynck.io',
-          showDetails: false
+          showDetails: false,
         },
         {
           title: 'Podcast Machine',
@@ -29,11 +75,11 @@ class Portfolio extends React.Component {
             'Architected a modular and extensible back-end with Node.js, Express & MongoDB',
             'Integrated Amazon S3 storage API to support a large user-base and enable faster downloads',
             'Developed server-side caching of dynamically generated content to reduce server load',
-            'Implemented asynchronous video to MP3 transcoding with worker queue'
+            'Implemented asynchronous video to MP3 transcoding with worker queue',
           ],
           ghlink: 'https://github.com/plasticbugs/podcasty',
           videoDemo: 'wKugnd3eHaA',
-          showDetails: false
+          showDetails: false,
         },
         {
           title: '3DStxt',
@@ -46,143 +92,99 @@ class Portfolio extends React.Component {
             'Enabled custom URLs with Rails Router',
           ],
           weblink: 'http://3dstxt.com/scott',
-          showDetails: false
+          showDetails: false,
         },
         {
           title: 'Gimpshop',
           description: 'A decade ago, I forked the GIMP project and rearranged it to work like Adobe Photoshop. Since its creation, Gimpshop has been downloaded hundreds of thousands of times.',
           imageUrl: 'gimpshop-screenshot@2x.png',
           bullets: [
-            function(){
-              return(
+            (function renderDescription() {
+              return (
                 <div>
-                  Gimpshop was a popular open-source alternative to Adobe Photoshop for many years after its release. <i className="fa fa-smile-o fa-2" aria-hidden="true"></i>
+                  Gimpshop was a popular open-source alternative to Adobe Photoshop for many years after its release.
+                  <i className="fa fa-smile-o fa-2" aria-hidden="true" />
                 </div>
-              )
-            }(),
-            function(){
-              return(
+              );
+            }()),
+            (function renderDescription() {
+              return (
                 <div>
-                  I no longer maintain Gimpshop. Unfortunately, some unscrupulous people began distributing Gimpshop installers with adware and spyware. <i className="fa fa-frown-o fa-2" aria-hidden="true"></i>
+                  I no longer maintain Gimpshop. Unfortunately, some unscrupulous people began distributing Gimpshop installers with adware and spyware. <i className="fa fa-frown-o fa-2" aria-hidden="true" />
                 </div>
-              )
-            }()
+              );
+            }()),
           ],
           weblink: 'https://en.wikipedia.org/wiki/GIMPshop',
-          showDetails: false
-        }
-      ]
-    }
+          showDetails: false,
+        },
+      ],
+    };
     this.renderProject = this.renderProject.bind(this);
   }
 
-  renderLink(link, icon) {
-    let classname = `fa fa-${icon} fa-2`;
-    let linktext = icon === 'github' ? 'repo' : 'site';
-
-    return (
-        <a href={link}>
-          <i className={classname} aria-hidden={true}></i>{linktext}
-        </a>
-    );
-  }
-
-  renderYouTubeModal(ytlink) {
-    return (
-      <ModalVideoWrapper videoId={ytlink} />
-    )
-  }
-
-  renderBullets(project) {
-    if(project.bullets) {
-      return (
-        <ul className = "bullets">
-          {project.bullets.map((bullet, index) => {
-            return (
-              <li key={index}>{bullet}</li>
-            );
-          })}
-        </ul>
-      );
-    } else {
-      return null;
-    }
-  }
-
-  renderDetails(bullets) {
-    if(bullets) {
-      return(
-        <ul className="detail-list">
-        {
-          bullets.map((bullet, index) => {
-            return <li key={index}>{bullet}</li>
-          })
-        }
-        </ul>
-      )
-    }
+  toggleDetails(index) {
+    const projectsCopy = this.state.projects.map(project => Object.assign({}, project));
+    projectsCopy[index].showDetails = !projectsCopy[index].showDetails;
+    this.setState({ projects: projectsCopy });
   }
 
   renderProject(project, index) {
-    let ghlink, weblink, vidlink, details;
-    if(project.ghlink) {
-      ghlink = this.renderLink(project.ghlink, 'github');
+    let ghlink;
+    let weblink;
+    let vidlink;
+    let details;
+    if (project.ghlink) {
+      ghlink = Portfolio.renderLink(project.ghlink, 'github');
     }
-    if(project.weblink) {
-      weblink = this.renderLink(project.weblink, 'globe');
+    if (project.weblink) {
+      weblink = Portfolio.renderLink(project.weblink, 'globe');
     }
-    if(project.videoDemo) {
-      vidlink = this.renderYouTubeModal(project.videoDemo);
+    if (project.videoDemo) {
+      vidlink = Portfolio.renderYouTubeModal(project.videoDemo);
     }
-    if(project.showDetails) {
-      details = this.renderDetails(project.bullets);
+    if (project.showDetails) {
+      details = Portfolio.renderDetails(project.bullets);
     }
-    return(
+    return (
       <li key={project.imageUrl}>
-      <div className="image-box">
-        {this.renderBullets(project)}
-        <img 
-          src={`./images/${project.imageUrl}`}
-        />
-      </div>
-      <div className="info-box">
-        <div className="title">
-          <div className="external-links">{vidlink} {weblink} {ghlink}</div>
-          {project.title}
+        <div className="image-box">
+          {Portfolio.renderBullets(project)}
+          <img
+            src={`./images/${project.imageUrl}`}
+            alt={`${project.title} thumbnail`}
+          />
         </div>
-        <p className="description">
-          {project.description}
-          <a href="#" className="details" onClick={(e)=> {e.preventDefault(); this.toggleDetails(index)}}>More info...</a>
-        </p>
-        {details}
-      </div>
-    </li>
+        <div className="info-box">
+          <div className="title">
+            <div className="external-links">{vidlink} {weblink} {ghlink}</div>
+            {project.title}
+          </div>
+          <p className="description">
+            {project.description}
+            <button className="details" onClick={(e) => { e.preventDefault(); this.toggleDetails(index); }}>More info...</button>
+          </p>
+          {details}
+        </div>
+      </li>
     );
-  }
-
-  toggleDetails(index) {
-    let projectsCopy = this.state.projects.map(project => {
-      return Object.assign({}, project);
-    });
-    projectsCopy[index].showDetails = !projectsCopy[index].showDetails;
-    this.setState({projects: projectsCopy});
   }
 
   render() {
     return (
       <section className="portfolio">
-            <script src="https://gist.github.com/plasticbugs/b6a6be67c4d73041517fd554c1cc5fc1.js"></script>
-
-        <div className="title heading">Software Engineering Projects</div>
-        <ul className="project-list">
-          {this.state.projects.map( (project, index) => {
-            return this.renderProject(project, index);
-          })}
-        </ul>
+        <section className="portfolio-bg">
+        </section>
+        <section className="portfolio-content">
+          {/* <script src="https://gist.github.com/plasticbugs/b6a6be67c4d73041517fd554c1cc5fc1.js" /> */}
+          <div className="title heading">Software Engineering Projects</div>
+          <ul className="project-list">
+            {this.state.projects.map((project, index) => this.renderProject(project, index))}
+          </ul>
+        </section> 
       </section>
-    )
+    );
   }
 }
-
 
 module.exports = Portfolio;

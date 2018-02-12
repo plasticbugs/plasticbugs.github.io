@@ -1,20 +1,25 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
 class SomeCode extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
-    var current = ReactDOM.findDOMNode(this);
-    Prism.highlightElement(current);
+    Prism.highlightElement(this.node);
   }
 
   render() {
-    return <pre className={`language-${this.props.codeLang}`}><code>
-    <div>{this.props.codeSnippet}</div></code></pre>
+    return (
+      <pre ref={(node) => { this.node = node; return node; }} className={`language-${this.props.codeLang}`}>
+        <code>
+          <div>{this.props.codeSnippet}</div>
+        </code>
+      </pre>
+    );
   }
 }
+
+SomeCode.propTypes = {
+  codeLang: PropTypes.string.isRequired,
+  codeSnippet: PropTypes.element.isRequired,
+};
 
 module.exports = SomeCode;

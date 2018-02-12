@@ -8,8 +8,10 @@ class Skills extends React.Component {
       skills: [
         {
           title: 'JavaScript ES6',
-          codeSnippet: function(){
-            return (<div>{
+          codeSnippet: function snippet() {
+            return (
+              <div>
+                {
 `class TicTacToe {
   constructor() {
     this.gameBoard = [[null, null, null],[null, null, null],[null, null, null]];
@@ -121,15 +123,19 @@ class Skills extends React.Component {
 
 let game = new TicTacToe();
 game.startGame();`
-              }</div>)},
+                }
+              </div>);
+          },
           showModal: false,
           codeLang: 'javascript',
-          ghLink: 'https://github.com/plasticbugs/tictactoecli/blob/master/tictactoe.js'
+          ghLink: 'https://github.com/plasticbugs/tictactoecli/blob/master/tictactoe.js',
         },
         {
           title: 'React',
-          codeSnippet: function(){
-            return (<div>{
+          codeSnippet: function snippet() {
+            return (
+              <div>
+                {
 `import React from 'react';
 import javascriptTimeAgo from 'javascript-time-ago';
 
@@ -180,16 +186,19 @@ class PostView extends React.Component {
 };
 
 module.exports = PostView;`
-            }</div>)
+                }
+              </div>);
           },
           showModal: false,
           codeLang: 'jsx',
-          ghLink: 'https://github.com/plasticbugs/reddit-feed-reader/blob/master/src/PostView.jsx'
+          ghLink: 'https://github.com/plasticbugs/reddit-feed-reader/blob/master/src/PostView.jsx',
         },
         {
           title: 'Node.js',
-          codeSnippet: function(){
-            return (<div>{
+          codeSnippet: function snippet() {
+            return (
+              <div>
+                {
 `const axios = require('axios');
 
 let username = process.env.GITHUB_USERNAME;
@@ -247,15 +256,20 @@ module.exports = {
   getUserInfo: getUserInfo,
   getNextPageOfFollowers: getNextPageOfFollowers
 }`
-          }</div>)},
+              }
+            </div>
+          );
+        },
           showModal: false,
           codeLang: 'javascript',
-          ghLink: 'https://github.com/plasticbugs/gh-followers/blob/master/server/api/githubHelper.js'
+          ghLink: 'https://github.com/plasticbugs/gh-followers/blob/master/server/api/githubHelper.js',
         },
         {
           title: 'React Router',
-          codeSnippet: function(){
-            return (<div>{
+          codeSnippet: function snippet() {
+            return (
+              <div>
+                {
 `import React from 'react';
 import { Route, Link, BrowserRouter, Switch, Redirect, withRouter } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
@@ -354,7 +368,10 @@ const mapDispatchToProps = (dispatch) => {
 const history = createHistory();
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);`
-          }</div>)},
+            }
+            </div>
+          )
+        },
           showModal: false,
           codeLang: 'jsx',
           ghLink: 'https://github.com/plasticbugs/ynck.io/blob/master/client/src/components/Main.js'

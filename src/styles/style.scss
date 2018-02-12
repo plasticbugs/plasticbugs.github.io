@@ -7,12 +7,13 @@ $white: #fefefe;
 $transparentWhite: transparentize($white, .3);
 $orange: #FF5722;
 $red: #ff2020;
+$lightGray: #f6f9fc;
 
 @media screen and (min-width: 1140px) {
   .portfolio .project-list > li {
     display: inline-block;
   }
-  .project-list > li:nth-child(even) {
+  .portfolio .project-list > li:nth-child(even) {
     margin-left: 30px;
   }
 }
@@ -38,7 +39,7 @@ body {
   font-style: normal;
   font-weight: 300;
   color: $transparentWhite;
-  background-color: $darkGray;
+  background-color: $lightGray;
 }
 
 a {
@@ -57,22 +58,35 @@ a:hover {
   margin-bottom: 20px
 }
 
-.header {
-  text-align: center;
+header {
+  position: relative;
   margin: auto;
-  padding: 100px 100px 80px 100px;
-  background: linear-gradient(111deg,#00BCD4,#04a9f4);
-  box-shadow: inset 0px -91px 12px -90px transparentize(#151513, .4);
+  // background: linear-gradient(111deg,#00BCD4,#04a9f4);
+  // box-shadow: inset 0px -91px 12px -90px transparentize(#151513, .4);
   color: $white;
-  p {
-      margin-top: 20px;
-      line-height: 1.5em
+  .header-bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    transform: skewY(-5deg);
+    transform-origin: 0;
+    background: linear-gradient(111deg, #53f 15%,#05d5ff 70%,#a6ffcb 94%);
   }
-  a:not(:first-child) {
-    padding-left: 20px
-  }
-  a:last-child {
-    padding-right: 0px;
+  section {
+    position: relative;
+    // height: 600px;
+    padding: 100px 100px 100px 100px;
+    p {
+        margin-top: 20px;
+        line-height: 1.5em
+    }
+    a:not(:first-child) {
+      padding-left: 20px
+    }
+    a:last-child {
+      padding-right: 0px;
+    }
   }
 }
 
@@ -96,18 +110,107 @@ a:hover {
 }
 
 .portfolio {
-  @extend .whitney300;
-  color: $white;
-  padding: 40px 20px;
-  text-align: center;
-  line-height: 1.2em;
-  box-shadow: inset 0px 96px 12px -90px transparentize(#000000, .7);
-  li {
-    width: 500px;
-    margin: 0 auto;
-    margin-bottom: 50px;
-    vertical-align: top;
+  position: relative;
+  .portfolio-bg {
+    width: 100%;
+    height: 100%;
+    background-color: $darkGray;
+    position: absolute;
   }
+  
+  .portfolio-content {
+    position: relative;
+    @extend .whitney300;
+    color: $white;
+    padding: 40px 20px;
+    text-align: center;
+    line-height: 1.2em;
+
+
+    .bullets {
+      transition: all .2s ease;
+      opacity: 0;
+      float: right;
+      z-index: 1;
+      width: 500px;
+      position: absolute;
+      background-color: transparentize(#133542, .2);
+      padding-top: 30px;
+      height: 274px;
+      font-weight: 300;
+      line-height: 1.2em;
+
+    }
+
+    .bullets li {
+      margin-bottom: 18px;
+      color: $white;
+      padding: 0 20px;
+      width: 460px;
+      font-size: .8em;
+    }
+
+    .bullets:hover {
+      opacity: 1;
+      transition: all .3s ease;
+    }
+
+    li {
+      width: 500px;
+      margin: 0 auto;
+      margin-bottom: 50px;
+      vertical-align: top;
+    }
+
+    .info-box .title {
+      margin-bottom: 0;
+      background-color: transparentize($color: #000000, $amount: .3);
+      color: $white;
+      overflow: hidden;
+    }
+
+    .info-box {
+      padding: 5px;
+      background-color: #dcdcdc;
+      color: $darkGray;
+      i {
+        padding-right: 3px;
+        vertical-align: middle
+      }
+    }
+
+    .image-box {
+      @extend .info-box;
+      line-height: 0px;  
+      padding: 0;
+      li {
+        margin-left: 0;
+      }
+    }
+
+    .image-box img {
+      width: 100%;
+    }
+
+    .description, .image-box, .info-box {
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .description {
+      font-size: .8em;
+      padding: 8px 10px;
+      line-height: 1.5em;
+    }
+
+  }
+}
+
+.info-box a, .profile-links a {
+  color: #8de9ff;
+  padding-right: 17px;
+  font-size: .8em;
+  text-decoration: none
 }
 
 div.heading {
@@ -124,53 +227,6 @@ div.heading {
   border-radius: 3px;
 }
 
-.info-box .title {
-  margin-bottom: 0;
-  background-color: transparentize($color: #000000, $amount: .3);
-  color: $white;
-  overflow: hidden;
-}
-
-.info-box {
-  padding: 5px;
-  background-color: #dcdcdc;
-  color: $darkGray;
-  i {
-    padding-right: 3px;
-    vertical-align: middle
-  }
-}
-
-.image-box {
-  @extend .info-box;
-  line-height: 0px;  
-  padding: 0;
-  li {
-    margin-left: 0;
-  }
-}
-
-.image-box img {
-  width: 100%;
-}
-
-.description, .image-box, .info-box {
-  margin: 0 auto;
-  text-align: left;
-}
-
-.description {
-  font-size: .8em;
-  padding: 8px 10px;
-  line-height: 1.5em;
-}
-
-.info-box a, .profile-links a {
-  color: #8de9ff;
-  padding-right: 17px;
-  font-size: .8em;
-  text-decoration: none
-}
 
 .profile-links {
   a {
@@ -209,15 +265,21 @@ div.heading {
 
 .youtube-link {
   display: inline;
-  a {
+  a, button {
     transition: all .2s ease;  
     color: $red;
+    background: none;
+    border: none;
+  }
+  button:hover {
+    cursor: pointer;
+    color: #FF9800;
   }
 }
 
 .skills-container {
   width: 100%;
-  background-color: #e4f1f9;  
+  background-color: $lightGray;  
 }
 
 .skills {
@@ -225,7 +287,8 @@ div.heading {
   text-align: center;
   width: 60%;
   margin: 0px auto;
-  padding: 50px 0px;
+  padding-top: 0;
+  padding-bottom: 50px;
   p {
     font-size: .7em;
     margin-bottom: 14px;
@@ -246,33 +309,6 @@ div.heading {
   margin-bottom: 10px;
 }
 
-.bullets {
-  transition: all .2s ease;
-  opacity: 0;
-  float: right;
-  z-index: 1;
-  width: 500px;
-  position: absolute;
-  background-color: transparentize(#133542, .2);
-  padding-top: 30px;
-  height: 274px;
-  font-weight: 300;
-  line-height: 1.2em;
-
-}
-
-.bullets li {
-  margin-bottom: 18px;
-  color: $white;
-  padding: 0 20px;
-  width: 460px;
-  font-size: .8em;
-}
-
-.bullets:hover {
-  opacity: 1;
-  transition: all .3s ease;
-}
 
 .code-block {
   text-align: left;
@@ -342,17 +378,18 @@ h2 .gh-link {
   display: none;
 }
 
-ul.detail-list {
+.portfolio ul.detail-list {
   padding: 0 10px 5px 10px;
   font-size: .7em;
   color: #036075;
 }
 
-a.details {
+button.details {
   color: #0099bd;
+  margin-top: 10px;
 }
 
-ul.detail-list li {
+.portfolio ul.detail-list li {
   width: 100%;
   margin-bottom: 1em;
 }
@@ -371,7 +408,7 @@ p.profile-links {
   padding: 50px;
   text-align: center;
   background-color: #e4f1f9;
-  color: #2e363b;
+  color: $darkGray;
   font-size: .8em;
   p {
     line-height: 1.4em;
@@ -434,7 +471,7 @@ and (orientation: portrait) {
     text-align: right;
   }
 
-  .portfolio li {
+  .portfolio .portfolio-content li {
     width: 100%;
   }
 }
@@ -448,13 +485,12 @@ and (orientation: portrait) {
 @media screen and (max-width: 568px) {
   p.profile-links {
     width: 10em;
-    margin: auto;
     margin-top: 50px;
     text-align: left;
     display: block;
   }
 
-  .header a:not(:first-child) {
+  header section a:not(:first-child) {
     padding-left: 0px;
   }
 
