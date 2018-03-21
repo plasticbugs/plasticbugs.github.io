@@ -73,8 +73,9 @@ class Portfolio extends React.Component {
           imageUrl: 'podcast-machine-screenshot@2x.png',
           bullets: [
             'Architected a modular and extensible back-end with Node.js, Express & MongoDB',
-            'Integrated Amazon S3 storage API to support a large user-base and enable faster downloads',
-            'Developed server-side caching of dynamically generated content to reduce server load',
+            'Configured a worker queue to conserve server bandwidth',
+            'Leveraged WebSockets to communicate download progress in realtime to connected clients',
+            'Developed server-side caching via Redis of dynamically generated content to reduce server load',
             'Implemented asynchronous video to MP3 transcoding with worker queue',
           ],
           ghlink: 'https://github.com/plasticbugs/podcasty',
